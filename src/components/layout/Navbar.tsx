@@ -88,7 +88,7 @@ export const Navbar: React.FC = () => {
               className="flex items-center focus:outline-none group"
             >
               <span
-                className="text-2xl sm:text-[1.75rem] lowercase group-hover:opacity-80 transition-opacity tracking-wider inline-flex items-center"
+                className="text-2xl sm:text-[1.75rem] group-hover:opacity-80 transition-opacity tracking-wider inline-flex items-center"
                 style={{
                   fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
                   fontWeight: 500,
@@ -100,7 +100,7 @@ export const Navbar: React.FC = () => {
                     color: pathname === '/contact' ? '#ffffff' : 'rgb(15, 29, 7)',
                   }}
                 >
-                  wahid
+                  Byte
                 </span>
                 <span
                   style={{
@@ -110,7 +110,7 @@ export const Navbar: React.FC = () => {
                         : 'rgba(15, 29, 7, 0.45)',
                   }}
                 >
-                  solutions
+                  operator
                 </span>
               </span>
             </Link>
@@ -318,8 +318,8 @@ export const Navbar: React.FC = () => {
                   ? 'text-[#FFD9B6] hover:text-[#ffe4cb]'
                   : 'text-[#48c774] hover:text-[#38b363]'
               }`}
-              title="Wahid Solutions Spirit"
-              aria-label="Wahid Solutions Spirit"
+              title="Byte Operator Spirit"
+              aria-label="Byte Operator Spirit"
             >
               <svg
                 width="32"
@@ -416,7 +416,7 @@ export const Navbar: React.FC = () => {
             </nav>
 
             <div className="pt-6 border-t border-black/10 flex flex-col gap-3 text-sm text-zinc-600 mt-6">
-              <span>hello@wahidsolutions.com</span>
+              <span>hello@byteoperator.com</span>
               <span className="text-xs text-zinc-400 font-mono">USA • UK • AUSTRALIA</span>
             </div>
           </motion.div>

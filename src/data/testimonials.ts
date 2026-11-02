@@ -8,25 +8,25 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    quote: "Wahid Solutions transformed our digital presence into a living piece of digital art. The reaction from our customers and critics worldwide has been extraordinary.",
+    quote: "Byte Operator transformed our digital presence into a living piece of digital art. The reaction from our customers and critics worldwide has been extraordinary.",
     author: "Elena Vance",
     role: "Creative Director",
     company: "PIQUE Collective"
   },
   {
-    quote: "The level of technical precision and aesthetic finesse Wahid Solutions brought to Sussex is peerless. They elevated our brand into a global design powerhouse.",
+    quote: "The level of technical precision and aesthetic finesse Byte Operator brought to Sussex is peerless. They elevated our brand into a global design powerhouse.",
     author: "Marcus Sutherland",
     role: "Head of Brand",
     company: "Sussex Taps"
   },
   {
-    quote: "Wahid Solutions turned terabytes of opaque data into one of the most vital investigative journalism tools of our decade.",
+    quote: "Byte Operator turned terabytes of opaque data into one of the most vital investigative journalism tools of our decade.",
     author: "Dr. Aaron Meyer",
     role: "Lead Researcher",
     company: "Surveillance Watch"
   },
   {
-    quote: "Working with Wahid Solutions felt like working with a high-calibre team that genuinely cares about every micro-interaction and pixel.",
+    quote: "Working with Byte Operator felt like working with a high-calibre team that genuinely cares about every micro-interaction and pixel.",
     author: "Sophie Campbell",
     role: "Chief Digital Officer",
     company: "Pharmacy 777"

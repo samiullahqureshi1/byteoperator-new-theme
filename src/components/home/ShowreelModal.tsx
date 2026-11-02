@@ -53,7 +53,7 @@ export const ShowreelModal: React.FC<ShowreelModalProps> = ({ isOpen, onClose })
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping" />
               <span className="text-xs font-mono tracking-widest text-white uppercase font-bold">
-                Wahid Solutions Showreel 2026
+                Byte Operator Showreel 2026
               </span>
             </div>
 

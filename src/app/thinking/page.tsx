@@ -280,7 +280,7 @@ export default function ThinkingPage() {
                 </p>
 
                 <p>
-                  At Wahid Solutions, we believe great digital experiences are born at the
+                  At Byte Operator, we believe great digital experiences are born at the
                   intersection of refined aesthetics and technological precision. Whether crafting
                   award-winning web architectures or engineering performant mobile applications,
                   every detail must serve a strategic purpose.

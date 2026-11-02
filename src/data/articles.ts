@@ -12,12 +12,12 @@ export interface Article {
 
 export const articles: Article[] = [
   {
-    slug: 'wahid-solutions-wins-4-australian-web-awards-including-best-in-show-design',
-    title: 'Wahid Solutions wins 4 Australian Web Awards, including Best in Show: Design',
+    slug: 'byte-operator-wins-4-australian-web-awards-including-best-in-show-design',
+    title: 'Byte Operator wins 4 Australian Web Awards, including Best in Show: Design',
     category: 'Awards',
     readTime: '3 min read',
     excerpt:
-      "We're proud to share that Wahid Solutions took home four awards at this year's Australian Web Awards, including one of the night's highest honours: Best in Show: Design.",
+      "We're proud to share that Byte Operator took home four awards at this year's Australian Web Awards, including one of the night's highest honours: Best in Show: Design.",
     date: '23 June 2026',
     authorName: 'Jay Hollywood',
     authorAvatar:
@@ -26,8 +26,8 @@ export const articles: Article[] = [
       'https://ik.imagekit.io/isclzlt7q/humaan-v6-production/images/AWA2026_1hYjYH-jb.jpg?tr=w-600,h-760,q-85',
   },
   {
-    slug: 'global-recognition-for-two-wahid-projects',
-    title: 'Global recognition for two Wahid Solutions projects',
+    slug: 'global-recognition-for-two-byte-operator-projects',
+    title: 'Global recognition for two Byte Operator projects',
     category: 'Awards',
     readTime: '3 min read',
     excerpt:

@@ -143,12 +143,12 @@ export default function ContactPage() {
               <span>We work globally</span>
             </div>
             <a
-              href="mailto:contact@wahidsolutions.com"
+              href="mailto:contact@byteoperator.com"
               onMouseEnter={playHover}
               onClick={playClick}
               className="text-sm sm:text-[15px] text-white/90 hover:text-white transition-colors"
             >
-              contact@wahidsolutions.com
+              contact@byteoperator.com
             </a>
           </div>
 
@@ -157,12 +157,12 @@ export default function ContactPage() {
             <h3 className="font-medium text-[15px] sm:text-[16px] text-white/90 mb-1">USA</h3>
             <p className="text-sm text-white/60 mb-0.5">Los Angeles, CA</p>
             <a
-              href="mailto:jason@wahidsolutions.com"
+              href="mailto:jason@byteoperator.com"
               onMouseEnter={playHover}
               onClick={playClick}
               className="text-sm sm:text-[15px] text-white/90 hover:text-white transition-colors"
             >
-              jason@wahidsolutions.com
+              jason@byteoperator.com
             </a>
           </div>
 
@@ -171,12 +171,12 @@ export default function ContactPage() {
             <h3 className="font-medium text-[15px] sm:text-[16px] text-white/90 mb-1">Australia</h3>
             <p className="text-sm text-white/60 mb-0.5">Perth, WA</p>
             <a
-              href="mailto:jay@wahidsolutions.com.au"
+              href="mailto:jay@byteoperator.com.au"
               onMouseEnter={playHover}
               onClick={playClick}
               className="text-sm sm:text-[15px] text-white/90 hover:text-white transition-colors"
             >
-              jay@wahidsolutions.com.au
+              jay@byteoperator.com.au
             </a>
           </div>
         </div>

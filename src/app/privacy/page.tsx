@@ -19,12 +19,12 @@ export default function PrivacyPage() {
           <section className="flex flex-col gap-4">
             <h2 className="text-2xl font-bold text-white">1. Our Commitment to Privacy</h2>
             <p>
-              Wahid Solutions is dedicated to protecting the privacy and confidentiality of our clients, website visitors, and partner organizations. We collect and process data in strict accordance with global standards including GDPR, CCPA, and the Australian Privacy Principles.
+              Byte Operator is dedicated to protecting the privacy and confidentiality of our clients, website visitors, and partner organizations. We collect and process data in strict accordance with global standards including GDPR, CCPA, and the Australian Privacy Principles.
             </p>
           </section>
 
           <section className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold text-white">2. Wahid Solutions &amp; AI Governance</h2>
+            <h2 className="text-2xl font-bold text-white">2. Byte Operator &amp; AI Governance</h2>
             <p>
               We believe artificial intelligence should augment human creativity, not replace thoughtful craftsmanship. When deploying intelligent models or automated workflows in client products:
             </p>
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
           <section className="flex flex-col gap-4">
             <h2 className="text-2xl font-bold text-white">4. Contact Privacy Officer</h2>
             <p>
-              For any questions regarding data practices or to request data removal, please contact <a href="mailto:privacy@wahidsolutions.com" className="text-sky-400 hover:underline">privacy@wahidsolutions.com</a>.
+              For any questions regarding data practices or to request data removal, please contact <a href="mailto:privacy@byteoperator.com" className="text-sky-400 hover:underline">privacy@byteoperator.com</a>.
             </p>
           </section>
         </div>

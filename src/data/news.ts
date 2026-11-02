@@ -41,7 +41,7 @@ export const newsItems: NewsItem[] = [
     category: 'Awards',
     date: '08.05.26',
     title: 'Global Recognition:',
-    subtitle: 'Two Wahid Solutions projects receive high honours',
+    subtitle: 'Two Byte Operator projects receive high honours',
     actionText: 'Read More',
     link: '/work',
     image: 'https://ik.imagekit.io/isclzlt7q/humaan-v6-production/images/awardsfeed__8l_rzNIIP.jpg?tr=w-800,h-900,q-85',

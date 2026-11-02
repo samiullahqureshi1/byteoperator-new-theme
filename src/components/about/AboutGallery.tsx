@@ -19,14 +19,14 @@ const galleryItems: GalleryItem[] = [
     id: '1',
     type: 'image',
     src: 'https://ik.imagekit.io/isclzlt7q/humaan-v6-production/images/2_workshop-278493_iYzy3jxZd.jpg?tr=h-495,dpr-2,f-webp,q-80',
-    alt: 'Wahid Solutions Team Workshop',
+    alt: 'Byte Operator Team Workshop',
     isTall: false,
   },
   {
     id: '2',
     type: 'image',
     src: 'https://ik.imagekit.io/isclzlt7q/humaan-v6-production/images/lunching-289000_ch-UqVNIM.jpg?tr=h-347,dpr-2,f-webp,q-80',
-    alt: 'Wahid Solutions Team Lunch',
+    alt: 'Byte Operator Team Lunch',
     isTall: false,
   },
   {
@@ -41,7 +41,7 @@ const galleryItems: GalleryItem[] = [
     id: '4',
     type: 'image',
     src: 'https://ik.imagekit.io/isclzlt7q/humaan-v6-production/images/ross-jess-289004_Cd807V1Pl.jpg?tr=h-495,dpr-2,f-webp,q-80',
-    alt: 'Wahid Solutions Ice Cream Team',
+    alt: 'Byte Operator Ice Cream Team',
     isTall: true,
   },
   {
@@ -225,7 +225,7 @@ export const AboutGallery: React.FC = () => {
                   <div className="relative w-full h-full bg-zinc-100 overflow-hidden">
                     <Image
                       src={item.src}
-                      alt={item.alt || 'Wahid Solutions Gallery'}
+                      alt={item.alt || 'Byte Operator Gallery'}
                       fill
                       sizes="(max-width: 768px) 360px, (max-width: 1200px) 460px, 540px"
                       className="object-cover select-none pointer-events-none"

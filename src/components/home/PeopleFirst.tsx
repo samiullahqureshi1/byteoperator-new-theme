@@ -125,7 +125,7 @@ export const PeopleFirst: React.FC = () => {
             <div className="relative w-full aspect-[4/4.3] sm:aspect-[4/4.1] lg:aspect-[4/4.4] rounded-2xl sm:rounded-3xl lg:rounded-[36px] overflow-hidden shadow-2xl bg-black/5">
               <Image
                 src="https://ik.imagekit.io/isclzlt7q/humaan-v6-production/images/humaanabout-286282_OoNkAqIKe.jpg?tr=w-1400,h-1500,dpr-2,f-webp,q-85"
-                alt="Wahid Solutions Studio Team"
+                alt="Byte Operator Studio Team"
                 fill
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 priority

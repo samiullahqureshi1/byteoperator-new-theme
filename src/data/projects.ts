@@ -63,7 +63,7 @@ export const projects: Project[] = [
     ],
     scope: ['Healthcare Strategy & UX', 'Omnichannel Architecture', 'Custom CMS & API Bridge', 'Design Systems'],
     testimonial: {
-      quote: 'Wahid Solutions transformed our digital footprint into an empathetic, world-class healthcare experience that truly puts patients first.',
+      quote: 'Byte Operator transformed our digital footprint into an empathetic, world-class healthcare experience that truly puts patients first.',
       author: 'David Manuel',
       role: 'Managing Director, Pharmacy 777'
     }
@@ -163,7 +163,7 @@ export const projects: Project[] = [
     ],
     scope: ['Interactive Graph Architecture', '3D Geospatial Visualization', 'Real-time Filtering Engine', 'Accessible UX'],
     testimonial: {
-      quote: 'Wahid Solutions turned terabytes of opaque data into one of the most vital investigative journalism tools of our decade.',
+      quote: 'Byte Operator turned terabytes of opaque data into one of the most vital investigative journalism tools of our decade.',
       author: 'Dr. Aaron Meyer',
       role: 'Lead Researcher, Surveillance Watch'
     }
@@ -201,7 +201,7 @@ export const projects: Project[] = [
     ],
     scope: ['Interactive 3D Configurator', 'Custom Product Taxonomy', 'Design System', 'B2B Trade Portal'],
     testimonial: {
-      quote: 'The level of technical precision and aesthetic finesse Wahid Solutions brought to Sussex is peerless. They elevated our brand into a global design powerhouse.',
+      quote: 'The level of technical precision and aesthetic finesse Byte Operator brought to Sussex is peerless. They elevated our brand into a global design powerhouse.',
       author: 'Marcus Sutherland',
       role: 'Head of Brand, Sussex Taps'
     }
@@ -452,7 +452,7 @@ export const projects: Project[] = [
     ],
     scope: ['Brand Identity & Strategy', 'UI/UX Design', 'Interactive Architecture Models', 'Next.js Frontend'],
     testimonial: {
-      quote: 'Wahid Solutions transformed our digital presence into a living piece of digital art. The reaction from our customers and critics worldwide has been extraordinary.',
+      quote: 'Byte Operator transformed our digital presence into a living piece of digital art. The reaction from our customers and critics worldwide has been extraordinary.',
       author: 'Elena Vance',
       role: 'Creative Director, PIQUE'
     }

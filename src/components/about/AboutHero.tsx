@@ -150,7 +150,7 @@ export const AboutHero: React.FC = () => {
               <div className="relative w-full aspect-square mt-[max(13.2vw,30vh)]">
                 <Image
                   src={TEAM_IMAGE_LOCAL}
-                  alt="Wahid Solutions Team"
+                  alt="Byte Operator Team"
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1920px"

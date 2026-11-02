@@ -107,11 +107,11 @@ export const Footer: React.FC = () => {
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
             <a
-              href="mailto:contact@wahidsolutions.com"
+              href="mailto:contact@byteoperator.com"
               onMouseEnter={playHover}
               className="text-[#0f1d07] font-semibold hover:text-[#48c774] transition-colors"
             >
-              contact@wahidsolutions.com
+              contact@byteoperator.com
             </a>
           </div>
 
@@ -120,11 +120,11 @@ export const Footer: React.FC = () => {
             <h4 className="font-semibold text-[#0f1d07] mb-2.5">USA</h4>
             <p className="text-[#0f1d07]/50 mb-1">Los Angeles, CA</p>
             <a
-              href="mailto:jason@wahidsolutions.com"
+              href="mailto:jason@byteoperator.com"
               onMouseEnter={playHover}
               className="text-[#0f1d07]/50 hover:text-[#0f1d07] transition-colors"
             >
-              jason@wahidsolutions.com
+              jason@byteoperator.com
             </a>
           </div>
 
@@ -133,11 +133,11 @@ export const Footer: React.FC = () => {
             <h4 className="font-semibold text-[#0f1d07] mb-2.5">Australia</h4>
             <p className="text-[#0f1d07]/50 mb-1">Perth, WA</p>
             <a
-              href="mailto:jay@wahidsolutions.com.au"
+              href="mailto:jay@byteoperator.com.au"
               onMouseEnter={playHover}
               className="text-[#0f1d07]/50 hover:text-[#0f1d07] transition-colors"
             >
-              jay@wahidsolutions.com.au
+              jay@byteoperator.com.au
             </a>
           </div>
         </div>
@@ -148,15 +148,15 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="flex flex-wrap items-center justify-between gap-6 text-xs sm:text-sm text-[#0f1d07]/60 font-medium">
           <div className="flex items-center gap-6 sm:gap-8 flex-wrap">
-            {/* Wahid Solutions Logo Wordmark */}
+            {/* Byte Operator Logo Wordmark */}
             <Link
               href="/"
               onMouseEnter={playHover}
               onClick={playClick}
               className="text-base sm:text-lg font-medium tracking-tight text-[#0f1d07] focus:outline-none flex items-center"
             >
-              <span className="font-medium tracking-[0.06em]">wahid</span>
-              <span className="font-normal opacity-45 tracking-[0.06em]">solutions</span>
+              <span className="font-medium tracking-[0.06em]">Byte</span>
+              <span className="font-normal opacity-45 tracking-[0.06em]">operator</span>
             </Link>
 
             <span>© 2026</span>
@@ -174,7 +174,7 @@ export const Footer: React.FC = () => {
               onMouseEnter={playHover}
               className="hover:text-[#0f1d07] underline underline-offset-4 transition-colors"
             >
-              Wahid Solutions &amp; AI
+              Byte Operator &amp; AI
             </Link>
           </div>
 
