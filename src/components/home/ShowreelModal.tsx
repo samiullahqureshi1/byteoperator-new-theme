@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Volume2, VolumeX, Play, Pause, Maximize2, Sparkles } from 'lucide-react';
+import { X, Volume2, VolumeX, Play, Pause, Maximize2 } from 'lucide-react';
 import { useSound } from '@/components/layout/SoundProvider';
 
 interface ShowreelModalProps {

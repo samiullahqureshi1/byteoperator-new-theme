@@ -211,7 +211,7 @@ export const AIVoiceAgents: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.72 }}
             >
               <Link
-                href="/expertise"
+                href="/services/ai-voice-agents-healthcare"
                 onMouseEnter={playHover}
                 onClick={playClick}
                 className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#111814] text-white font-medium text-xs sm:text-sm hover:bg-black transition-all duration-300 shadow-md hover:shadow-xl group"

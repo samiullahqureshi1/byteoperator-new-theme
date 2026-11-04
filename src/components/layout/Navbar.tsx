@@ -417,9 +417,8 @@ export const Navbar: React.FC = () => {
               ))}
             </nav>
 
-            <div className="pt-6 border-t border-black/10 flex flex-col gap-3 text-sm text-zinc-600 mt-6">
-              <span>hello@byteoperator.com</span>
-              <span className="text-xs text-zinc-400 font-mono">USA • UK • AUSTRALIA</span>
+            <div className="pt-6 border-t border-black/10 flex flex-col gap-2 text-sm text-zinc-600 mt-6">
+              <a href="mailto:info@byteoperator.com" className="hover:text-black transition-colors font-medium">info@byteoperator.com</a>
             </div>
           </motion.div>
         )}

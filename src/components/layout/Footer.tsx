@@ -89,9 +89,8 @@ export const Footer: React.FC = () => {
           </h2>
         </Link>
 
-        {/* Global Locations & Contact Grid (3 Columns) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-14 mt-20 sm:mt-28 lg:mt-36 mb-16 sm:mb-24 text-[15px] sm:text-base">
-          {/* Column 1: We work globally */}
+        {/* Global Contact & Presence (Single email, no physical address) */}
+        <div className="mt-20 sm:mt-28 lg:mt-36 mb-16 sm:mb-24 text-[15px] sm:text-base">
           <div className="flex flex-col">
             <div className="flex items-center gap-2 font-semibold text-[#0f1d07] mb-2.5">
               <Globe className="w-4 h-4 text-[#0f1d07] stroke-[2]" />
@@ -101,43 +100,17 @@ export const Footer: React.FC = () => {
               href="/contact"
               onMouseEnter={playHover}
               onClick={playClick}
-              className="text-[#0f1d07] hover:text-[#48c774] transition-colors mb-1 font-normal flex items-center gap-1 group"
+              className="text-[#0f1d07] hover:text-[#48c774] transition-colors mb-1.5 font-normal flex items-center gap-1 group w-fit"
             >
               <span>Submit a brief</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
             <a
-              href="mailto:contact@byteoperator.com"
+              href="mailto:info@byteoperator.com"
               onMouseEnter={playHover}
-              className="text-[#0f1d07] font-semibold hover:text-[#48c774] transition-colors"
+              className="text-[#0f1d07] font-semibold text-base sm:text-lg hover:text-[#48c774] transition-colors w-fit"
             >
-              contact@byteoperator.com
-            </a>
-          </div>
-
-          {/* Column 2: USA */}
-          <div className="flex flex-col">
-            <h4 className="font-semibold text-[#0f1d07] mb-2.5">USA</h4>
-            <p className="text-[#0f1d07]/50 mb-1">Los Angeles, CA</p>
-            <a
-              href="mailto:jason@byteoperator.com"
-              onMouseEnter={playHover}
-              className="text-[#0f1d07]/50 hover:text-[#0f1d07] transition-colors"
-            >
-              jason@byteoperator.com
-            </a>
-          </div>
-
-          {/* Column 3: Australia */}
-          <div className="flex flex-col">
-            <h4 className="font-semibold text-[#0f1d07] mb-2.5">Australia</h4>
-            <p className="text-[#0f1d07]/50 mb-1">Perth, WA</p>
-            <a
-              href="mailto:jay@byteoperator.com.au"
-              onMouseEnter={playHover}
-              className="text-[#0f1d07]/50 hover:text-[#0f1d07] transition-colors"
-            >
-              jay@byteoperator.com.au
+              info@byteoperator.com
             </a>
           </div>
         </div>

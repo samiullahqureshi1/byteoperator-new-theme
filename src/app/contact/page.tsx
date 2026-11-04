@@ -133,52 +133,21 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Bottom International Locations Row (Matching Reference Image) */}
+      {/* Bottom Contact Row (Single email, no physical address) */}
       <div className="max-w-[1600px] w-full mx-auto px-6 sm:px-12 lg:px-16 pt-16 pb-10 sm:pb-14 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 text-white">
-          {/* Column 1: Global */}
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2 font-medium text-[15px] sm:text-[16px] text-white/90 mb-1.5">
-              <Globe className="w-4 h-4 stroke-[1.8] text-white/80" />
-              <span>We work globally</span>
-            </div>
-            <a
-              href="mailto:contact@byteoperator.com"
-              onMouseEnter={playHover}
-              onClick={playClick}
-              className="text-sm sm:text-[15px] text-white/90 hover:text-white transition-colors"
-            >
-              contact@byteoperator.com
-            </a>
+        <div className="flex flex-col text-white">
+          <div className="flex items-center gap-2 font-medium text-[15px] sm:text-[16px] text-white/90 mb-1.5">
+            <Globe className="w-4 h-4 stroke-[1.8] text-white/80" />
+            <span>We work globally</span>
           </div>
-
-          {/* Column 2: USA */}
-          <div className="flex flex-col">
-            <h3 className="font-medium text-[15px] sm:text-[16px] text-white/90 mb-1">USA</h3>
-            <p className="text-sm text-white/60 mb-0.5">Los Angeles, CA</p>
-            <a
-              href="mailto:jason@byteoperator.com"
-              onMouseEnter={playHover}
-              onClick={playClick}
-              className="text-sm sm:text-[15px] text-white/90 hover:text-white transition-colors"
-            >
-              jason@byteoperator.com
-            </a>
-          </div>
-
-          {/* Column 3: Australia */}
-          <div className="flex flex-col">
-            <h3 className="font-medium text-[15px] sm:text-[16px] text-white/90 mb-1">Australia</h3>
-            <p className="text-sm text-white/60 mb-0.5">Perth, WA</p>
-            <a
-              href="mailto:jay@byteoperator.com.au"
-              onMouseEnter={playHover}
-              onClick={playClick}
-              className="text-sm sm:text-[15px] text-white/90 hover:text-white transition-colors"
-            >
-              jay@byteoperator.com.au
-            </a>
-          </div>
+          <a
+            href="mailto:info@byteoperator.com"
+            onMouseEnter={playHover}
+            onClick={playClick}
+            className="text-base sm:text-lg font-medium text-white/90 hover:text-white transition-colors w-fit"
+          >
+            info@byteoperator.com
+          </a>
         </div>
       </div>
 

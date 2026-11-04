@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { notFound, useParams } from 'next/navigation';
+import { notFound, useParams, redirect } from 'next/navigation';
 import {
   ArrowLeft,
   ArrowRight,
@@ -76,6 +76,10 @@ export default function ExpertiseDetailPage() {
   const params = useParams();
   const slug = params?.slug as string;
   const { playHover, playClick } = useSound();
+
+  if (slug === 'ai-voice-agents-receptionists') {
+    redirect('/services/ai-voice-agents-healthcare');
+  }
 
   let service: ExpertiseService | null = null;
   let parentCategoryTitle = '';

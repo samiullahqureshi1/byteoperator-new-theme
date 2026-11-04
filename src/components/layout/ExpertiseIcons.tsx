@@ -239,7 +239,7 @@ export const expertiseMenuGroups: ExpertiseMenuGroup[] = [
     items: [
       {
         label: "AI Voice Agents & Receptionists",
-        href: "/expertise/ai-voice-agents-receptionists",
+        href: "/services/ai-voice-agents-healthcare",
         color: "#06b6d4",
         icon: IconAIVoiceAgents,
       },

@@ -4,17 +4,17 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  FolderKanban,
-  HelpCircle,
-  ArrowRight,
-  Plus,
-  Minus,
-  Info,
-  Calendar,
-  MessageSquare,
-  Sparkles,
-  CheckCircle2,
-} from 'lucide-react';
+  FiFolder,
+  FiHelpCircle,
+  FiArrowRight,
+  FiPlus,
+  FiMinus,
+  FiInfo,
+  FiCalendar,
+  FiMessageSquare,
+  FiZap,
+  FiCheckCircle,
+} from 'react-icons/fi';
 import { useSound } from '@/components/layout/SoundProvider';
 import { TextSplit } from '@/components/ui/TextSplit';
 
@@ -39,43 +39,53 @@ const caseStudyPillars = [
 
 const faqs = [
   {
-    q: '1. What healthcare AI solutions does Byte Operator provide?',
+    number: '01',
+    q: 'What healthcare AI solutions does Byte Operator provide?',
     a: "Byte Operator develops healthcare-focused AI automation, voice-agent workflows, custom software, and system integration solutions based on each organization's requirements.",
   },
   {
-    q: '2. Can you build an AI receptionist for a medical practice?',
+    number: '02',
+    q: 'Can you build an AI receptionist for a medical practice?',
     a: 'Yes. We can scope AI voice-agent solutions for defined patient communication tasks, including routine inquiries, request capture, and call routing. Available features depend on the agreed implementation and connected systems.',
   },
   {
-    q: '3. Can an AI voice agent schedule healthcare appointments?',
+    number: '03',
+    q: 'Can an AI voice agent schedule healthcare appointments?',
     a: 'Appointment scheduling can be included when the relevant scheduling platform supports the required integration and the workflow has been implemented and tested.',
   },
   {
-    q: '4. Can you integrate with an EHR or EMR system?',
+    number: '04',
+    q: 'Can you integrate with an EHR or EMR system?',
     a: 'Integration feasibility depends on the platform, available APIs, access permissions, vendor requirements, and data-exchange capabilities. We assess these requirements before confirming the project scope.',
   },
   {
-    q: '5. What healthcare workflows can be automated?',
+    number: '05',
+    q: 'What healthcare workflows can be automated?',
     a: 'Potential workflows include patient inquiry routing, appointment confirmations, reminders, intake processes, internal notifications, follow-up tasks, and data synchronization between supported applications.',
   },
   {
-    q: '6. Do you develop custom healthcare software?',
+    number: '06',
+    q: 'Do you develop custom healthcare software?',
     a: "Yes. We can scope custom web applications, SaaS platforms, portals, dashboards, and internal software around your organization's requirements.",
   },
   {
-    q: '7. Do you work with small medical practices and clinics?',
+    number: '07',
+    q: 'Do you work with small medical practices and clinics?',
     a: 'Our solutions can be scoped for medical practices, specialty clinics, and larger healthcare organizations. Project suitability and requirements are discussed during discovery.',
   },
   {
-    q: '8. Are your healthcare solutions HIPAA compliant?',
+    number: '08',
+    q: 'Are your healthcare solutions HIPAA compliant?',
     a: 'HIPAA requirements depend on the organization, data, services, and contractual responsibilities involved. We assess applicable technical and vendor requirements for each project and confirm responsibilities before implementation.',
   },
   {
-    q: '9. How long does a healthcare software project take?',
+    number: '09',
+    q: 'How long does a healthcare software project take?',
     a: 'Project timelines depend on scope, integrations, complexity, data requirements, and testing. We establish a realistic implementation plan after discovery and technical assessment.',
   },
   {
-    q: '10. Do you provide ongoing software support?',
+    number: '10',
+    q: 'Do you provide ongoing software support?',
     a: 'Yes. Maintenance, technical support, and further development can be included according to the agreed project and support requirements.',
   },
 ];
@@ -111,7 +121,7 @@ export const CaseStudiesFAQCTA: React.FC = () => {
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.05] border border-black/10 text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-[#0f1d07]"
                 style={{ fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif' }}
               >
-                <FolderKanban className="w-3 h-3 text-[#A880F0]" />
+                <FiFolder className="w-3.5 h-3.5 text-[#A880F0]" />
                 CASE STUDIES
               </span>
             </motion.div>
@@ -172,7 +182,7 @@ export const CaseStudiesFAQCTA: React.FC = () => {
                 className="p-5 rounded-2xl bg-black/[0.025] border border-black/[0.08] hover:bg-black/[0.045] transition-all duration-300"
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <FiCheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span
                     className="text-sm font-medium text-[#0f1d07] tracking-tight"
                     style={{
@@ -209,7 +219,7 @@ export const CaseStudiesFAQCTA: React.FC = () => {
                 fontWeight: 400,
               }}
             >
-              <Info className="w-4 h-4 text-[#A880F0] shrink-0 mt-0.5" />
+              <FiInfo className="w-4 h-4 text-[#A880F0] shrink-0 mt-0.5" />
               <span>
                 <strong>Publishing note:</strong> Feature genuine, approved client projects only. If no healthcare case study is available, use a clearly labelled solution demonstration rather than presenting it as a completed client implementation.
               </span>
@@ -232,7 +242,7 @@ export const CaseStudiesFAQCTA: React.FC = () => {
                 }}
               >
                 <span>Explore Our Work</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                <FiArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.div>
           </div>
@@ -242,92 +252,168 @@ export const CaseStudiesFAQCTA: React.FC = () => {
         {/* SUBSECTION 2: FREQUENTLY ASKED QUESTIONS */}
         {/* ============================================================== */}
         <div className="border-b border-black/10 pb-16 sm:pb-20 lg:pb-28">
-          <div className="max-w-4xl mb-10 sm:mb-14">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="mb-3"
-            >
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.05] border border-black/10 text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-[#0f1d07]"
-                style={{ fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif' }}
-              >
-                <HelpCircle className="w-3 h-3 text-[#A880F0]" />
-                FREQUENTLY ASKED QUESTIONS
-              </span>
-            </motion.div>
-
-            <h2
-              className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-[-0.03em] leading-[1.12] text-[#0f1d07]"
-              style={{
-                fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
-                fontWeight: 500,
-              }}
-            >
-              <TextSplit
-                text="Healthcare AI and Software Development FAQs"
-                stagger={0.012}
-                delay={0.05}
-              />
-            </h2>
-          </div>
-
-          {/* Interactive Accordion of 10 FAQs */}
-          <div className="divide-y divide-black/10 border-y border-black/10">
-            {faqs.map((faq, index) => {
-              const isOpen = openFaqIndex === index;
-              return (
-                <div key={index} className="transition-colors">
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    onMouseEnter={playHover}
-                    className="w-full py-5 sm:py-6 flex items-start justify-between gap-4 text-left group"
-                    aria-expanded={isOpen}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
+            {/* Left Column: Sticky Header & Direct Support Card */}
+            <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+              <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="mb-3"
+                >
+                  <span
+                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.05] border border-black/10 text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-[#0f1d07]"
+                    style={{ fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif' }}
                   >
-                    <span
-                      className="text-base sm:text-lg lg:text-[19px] font-medium text-[#0f1d07] group-hover:text-black transition-colors leading-snug"
-                      style={{
-                        fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
-                        fontWeight: 500,
-                      }}
-                    >
-                      {faq.q}
-                    </span>
-                    <span className="w-8 h-8 rounded-full bg-black/[0.04] border border-black/[0.08] flex items-center justify-center shrink-0 mt-0.5 text-[#0f1d07] group-hover:bg-[#111814] group-hover:text-white transition-colors duration-200">
-                      {isOpen ? (
-                        <Minus className="w-4 h-4" />
-                      ) : (
-                        <Plus className="w-4 h-4" />
-                      )}
-                    </span>
-                  </button>
+                    <FiHelpCircle className="w-3.5 h-3.5 text-[#A880F0]" />
+                    FREQUENTLY ASKED QUESTIONS
+                  </span>
+                </motion.div>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <div
-                          className="pb-6 text-sm sm:text-base text-[#0f1d07]/80 leading-relaxed font-normal max-w-4xl"
+                <h2
+                  className="text-3xl sm:text-4xl lg:text-[42px] font-medium tracking-[-0.03em] leading-[1.14] text-[#0f1d07] mb-4"
+                  style={{
+                    fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                    fontWeight: 500,
+                  }}
+                >
+                  <TextSplit
+                    text="Healthcare AI and Software Development FAQs"
+                    stagger={0.012}
+                    delay={0.05}
+                  />
+                </h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
+                  className="text-sm sm:text-base text-[#0f1d07]/75 leading-relaxed font-normal"
+                  style={{
+                    fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                    fontWeight: 400,
+                  }}
+                >
+                  Find clear answers to common questions about our healthcare software development, AI voice agents, system integrations, and implementation process.
+                </motion.p>
+              </div>
+
+              {/* Direct Support / Discovery Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.25 }}
+                className="p-5 sm:p-6 rounded-2xl bg-black/[0.025] border border-black/[0.08] flex flex-col gap-3"
+              >
+                <h3
+                  className="text-base font-medium text-[#0f1d07] tracking-tight"
+                  style={{ fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif', fontWeight: 500 }}
+                >
+                  Have questions about your specific systems?
+                </h3>
+                <p
+                  className="text-xs sm:text-sm text-[#0f1d07]/70 leading-relaxed font-normal"
+                  style={{ fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif', fontWeight: 400 }}
+                >
+                  Our engineering team can evaluate your technical requirements, EHR/EMR platforms, and workflow automation possibilities during a discovery call.
+                </p>
+                <Link
+                  href="/contact"
+                  onMouseEnter={playHover}
+                  onClick={playClick}
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#0f1d07] hover:text-black underline underline-offset-4 mt-1 transition-colors group"
+                  style={{ fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif', fontWeight: 500 }}
+                >
+                  <span>Speak with our engineering team</span>
+                  <FiArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Interactive Elevated FAQ Cards */}
+            <div className="lg:col-span-7 flex flex-col gap-3 sm:gap-3.5">
+              {faqs.map((faq, index) => {
+                const isOpen = openFaqIndex === index;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.03 * index }}
+                    className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                      isOpen
+                        ? 'bg-white border-black/15 shadow-sm'
+                        : 'bg-black/[0.02] border-black/[0.07] hover:bg-black/[0.035]'
+                    }`}
+                  >
+                    <button
+                      onClick={() => toggleFaq(index)}
+                      onMouseEnter={playHover}
+                      className="w-full p-4 sm:p-5 flex items-start justify-between gap-4 text-left group cursor-pointer"
+                      aria-expanded={isOpen}
+                    >
+                      <div className="flex items-start gap-3 sm:gap-3.5 pr-2">
+                        <span
+                          className={`px-2 py-0.5 rounded-md text-[11px] font-mono font-semibold shrink-0 mt-0.5 transition-colors duration-200 ${
+                            isOpen
+                              ? 'bg-[#111814] text-white'
+                              : 'bg-black/[0.05] text-[#0f1d07]/75 group-hover:bg-black/10'
+                          }`}
+                        >
+                          {faq.number}
+                        </span>
+                        <span
+                          className="text-base sm:text-[17px] font-medium text-[#0f1d07] leading-snug tracking-tight group-hover:text-black transition-colors"
                           style={{
                             fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
-                            fontWeight: 400,
+                            fontWeight: 500,
                           }}
                         >
-                          {faq.a}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
+                          {faq.q}
+                        </span>
+                      </div>
+                      <span
+                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                          isOpen
+                            ? 'bg-[#111814] text-white rotate-45'
+                            : 'bg-black/[0.04] text-[#0f1d07] group-hover:bg-[#111814] group-hover:text-white'
+                        }`}
+                      >
+                        <FiPlus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      </span>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                          <div className="px-4 sm:px-5 pb-5 pt-1 border-t border-black/[0.06] ml-9 sm:ml-10">
+                            <p
+                              className="text-xs sm:text-sm text-[#0f1d07]/80 leading-relaxed font-normal pt-3"
+                              style={{
+                                fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                                fontWeight: 400,
+                              }}
+                            >
+                              {faq.a}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -352,7 +438,7 @@ export const CaseStudiesFAQCTA: React.FC = () => {
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.08] border border-white/10 text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-white/90"
                 style={{ fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif' }}
               >
-                <Sparkles className="w-3 h-3 text-[#A880F0]" />
+                <FiZap className="w-3 h-3 text-[#A880F0]" />
                 FINAL CALL TO ACTION
               </span>
             </div>
@@ -406,9 +492,9 @@ export const CaseStudiesFAQCTA: React.FC = () => {
                   fontWeight: 500,
                 }}
               >
-                <Calendar className="w-4 h-4 text-[#111814]" />
+                <FiCalendar className="w-4 h-4 text-[#111814]" />
                 <span>Book a Discovery Call</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                <FiArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
 
               <Link
@@ -421,7 +507,7 @@ export const CaseStudiesFAQCTA: React.FC = () => {
                   fontWeight: 500,
                 }}
               >
-                <MessageSquare className="w-4 h-4 text-white/80" />
+                <FiMessageSquare className="w-4 h-4 text-white/80" />
                 <span>Tell Us About Your Project</span>
               </Link>
             </div>

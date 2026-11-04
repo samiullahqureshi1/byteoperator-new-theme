@@ -16,7 +16,6 @@ import { WhyChooseUs } from '@/components/home/WhyChooseUs';
 import { DevelopmentProcess } from '@/components/home/DevelopmentProcess';
 import { SecurityPrivacy } from '@/components/home/SecurityPrivacy';
 import { CaseStudiesFAQCTA } from '@/components/home/CaseStudiesFAQCTA';
-import { PeopleFirst } from '@/components/home/PeopleFirst';
 import { WhatsNewFeed } from '@/components/home/WhatsNewFeed';
 
 export const metadata: Metadata = {
@@ -67,7 +66,6 @@ export default function HomePage() {
       <DevelopmentProcess />
       <SecurityPrivacy />
       <CaseStudiesFAQCTA />
-      <PeopleFirst />
       <WhatsNewFeed />
     </>
   );
