@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Bot, Code2, Network, Cloud, Sparkles } from 'lucide-react';
+import { FiCpu, FiCode, FiShare2, FiCloud, FiLayers, FiArrowRight } from 'react-icons/fi';
 import { useSound } from '@/components/layout/SoundProvider';
 import { TextSplit } from '@/components/ui/TextSplit';
 
@@ -13,25 +13,25 @@ const solutions = [
     title: 'AI Agents & Workflow Automation',
     description:
       'Automate routine patient communication and administrative processes through intelligent, connected workflows.',
-    icon: Bot,
+    icon: FiCpu,
   },
   {
     title: 'Custom Healthcare Software',
     description:
       'Develop web applications, SaaS platforms, portals, and internal tools tailored to your business requirements.',
-    icon: Code2,
+    icon: FiCode,
   },
   {
     title: 'Healthcare System Integration',
     description:
       'Connect supported healthcare platforms and business applications through APIs and structured data workflows.',
-    icon: Network,
+    icon: FiShare2,
   },
   {
     title: 'Cloud & Infrastructure Engineering',
     description:
       'Build and maintain the technical infrastructure needed to support reliable digital applications and future growth.',
-    icon: Cloud,
+    icon: FiCloud,
   },
 ];
 
@@ -71,7 +71,7 @@ export const CoreSolutions: React.FC = () => {
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.05] border border-black/10 text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-[#0f1d07]"
                 style={{ fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif' }}
               >
-                <Sparkles className="w-3 h-3 text-[#A880F0]" />
+                <FiLayers className="w-3 h-3 text-[#A880F0]" />
                 CORE SOLUTIONS
               </span>
             </motion.div>
@@ -174,7 +174,7 @@ export const CoreSolutions: React.FC = () => {
                 }}
               >
                 <span>Explore Our Services</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                <FiArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </motion.div>
           </div>

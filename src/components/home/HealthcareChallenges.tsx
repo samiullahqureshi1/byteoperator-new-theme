@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { PhoneMissed, Clock, Unlink, TrendingUp, AlertCircle } from 'lucide-react';
+import { FiPhoneMissed, FiClock, FiLink2, FiTrendingUp, FiAlertCircle } from 'react-icons/fi';
 import { useSound } from '@/components/layout/SoundProvider';
 
 const challenges = [
@@ -11,7 +11,7 @@ const challenges = [
     title: 'Missed Patient Calls',
     description:
       'Unanswered calls and delayed responses can make it harder for patients to reach your practice and request appointments.',
-    icon: PhoneMissed,
+    icon: FiPhoneMissed,
     color: '#ef4444',
     bgTint: 'rgba(239, 68, 68, 0.08)',
     borderTint: 'rgba(239, 68, 68, 0.18)',
@@ -21,7 +21,7 @@ const challenges = [
     title: 'Repetitive Administrative Tasks',
     description:
       'Manual appointment coordination, patient intake, reminders, and follow-ups can consume valuable staff time.',
-    icon: Clock,
+    icon: FiClock,
     color: '#f59e0b',
     bgTint: 'rgba(245, 158, 11, 0.08)',
     borderTint: 'rgba(245, 158, 11, 0.18)',
@@ -31,7 +31,7 @@ const challenges = [
     title: 'Disconnected Systems',
     description:
       'When business applications and healthcare platforms operate separately, teams may need to repeat tasks and transfer information manually.',
-    icon: Unlink,
+    icon: FiLink2,
     color: '#8b5cf6',
     bgTint: 'rgba(139, 92, 246, 0.08)',
     borderTint: 'rgba(139, 92, 246, 0.18)',
@@ -41,7 +41,7 @@ const challenges = [
     title: 'Increasing Operational Demands',
     description:
       'As healthcare practices grow, maintaining efficient and consistent workflows becomes increasingly important.',
-    icon: TrendingUp,
+    icon: FiTrendingUp,
     color: '#10b981',
     bgTint: 'rgba(16, 185, 129, 0.08)',
     borderTint: 'rgba(16, 185, 129, 0.18)',
@@ -68,7 +68,7 @@ export const HealthcareChallenges: React.FC = () => {
                   fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
                 }}
               >
-                <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
+                <FiAlertCircle className="w-3.5 h-3.5 text-amber-600" />
                 HEALTHCARE CHALLENGES
               </span>
             </div>

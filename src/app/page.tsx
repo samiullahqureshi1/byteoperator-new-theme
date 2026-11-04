@@ -5,6 +5,17 @@ import { StatementSection } from '@/components/home/StatementSection';
 import { WorkGrid } from '@/components/home/WorkGrid';
 import { CoreSolutions } from '@/components/home/CoreSolutions';
 import { AIVoiceAgents } from '@/components/home/AIVoiceAgents';
+import { WorkflowAutomation } from '@/components/home/WorkflowAutomation';
+import { SystemIntegration } from '@/components/home/SystemIntegration';
+import { SolutionsBySpecialty } from '@/components/home/SolutionsBySpecialty';
+import { CustomSoftware } from '@/components/home/CustomSoftware';
+import { SaaSWebApps } from '@/components/home/SaaSWebApps';
+import { CloudInfrastructure } from '@/components/home/CloudInfrastructure';
+import { ConnectedOperations } from '@/components/home/ConnectedOperations';
+import { WhyChooseUs } from '@/components/home/WhyChooseUs';
+import { DevelopmentProcess } from '@/components/home/DevelopmentProcess';
+import { SecurityPrivacy } from '@/components/home/SecurityPrivacy';
+import { CaseStudiesFAQCTA } from '@/components/home/CaseStudiesFAQCTA';
 import { PeopleFirst } from '@/components/home/PeopleFirst';
 import { WhatsNewFeed } from '@/components/home/WhatsNewFeed';
 
@@ -45,6 +56,17 @@ export default function HomePage() {
       <WorkGrid />
       <CoreSolutions />
       <AIVoiceAgents />
+      <WorkflowAutomation />
+      <SystemIntegration />
+      <SolutionsBySpecialty />
+      <CustomSoftware />
+      <SaaSWebApps />
+      <CloudInfrastructure />
+      <ConnectedOperations />
+      <WhyChooseUs />
+      <DevelopmentProcess />
+      <SecurityPrivacy />
+      <CaseStudiesFAQCTA />
       <PeopleFirst />
       <WhatsNewFeed />
     </>

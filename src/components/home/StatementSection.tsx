@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { PhoneMissed, ClipboardList, Unlink, TrendingUp } from 'lucide-react';
+import { FiPhoneMissed, FiClipboard, FiLink2, FiTrendingUp } from 'react-icons/fi';
 import { TextSplit } from '@/components/ui/TextSplit';
 import { useSound } from '@/components/layout/SoundProvider';
 
@@ -12,28 +12,28 @@ const challenges = [
     title: 'Missed Patient Calls',
     description:
       'Unanswered calls and delayed responses can make it harder for patients to reach your practice and request appointments.',
-    icon: PhoneMissed,
+    icon: FiPhoneMissed,
   },
   {
     number: '02',
     title: 'Repetitive Administrative Tasks',
     description:
       'Manual appointment coordination, patient intake, reminders, and follow-ups can consume valuable staff time.',
-    icon: ClipboardList,
+    icon: FiClipboard,
   },
   {
     number: '03',
     title: 'Disconnected Systems',
     description:
       'When business applications and healthcare platforms operate separately, teams may need to repeat tasks and transfer information manually.',
-    icon: Unlink,
+    icon: FiLink2,
   },
   {
     number: '04',
     title: 'Increasing Operational Demands',
     description:
       'As healthcare practices grow, maintaining efficient and consistent workflows becomes increasingly important.',
-    icon: TrendingUp,
+    icon: FiTrendingUp,
   },
 ];
 
