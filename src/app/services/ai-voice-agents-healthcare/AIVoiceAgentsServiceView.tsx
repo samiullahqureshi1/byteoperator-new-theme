@@ -1,8 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+
+const VIDEO_URL =
+  'https://cdn.shopify.com/videos/c/o/v/8bdbac54f88a42a98c042da706e7507f.mp4';
 import {
   FiPhoneCall,
   FiArrowRight,
@@ -138,21 +142,29 @@ const workflowSteps = [
     step: '01',
     title: 'A Patient Calls the Practice',
     desc: 'A patient contacts the healthcare organization through its configured phone system. The AI voice agent receives the inbound call and begins the conversation according to the practice’s communication requirements.',
+    image:
+      'https://cdn.shopify.com/s/files/1/0676/1155/7936/files/How_It_Works_01_Patient_Calls.webp?v=1793823668',
   },
   {
     step: '02',
     title: 'The AI Understands the Request',
     desc: 'The voice agent processes the patient’s spoken request and identifies the purpose of the conversation—whether asking about an appointment, requesting general practice information, or looking to change an existing booking.',
+    image:
+      'https://cdn.shopify.com/s/files/1/0676/1155/7936/files/How_It_Works_02_AI_Understands.webp?v=1793823670',
   },
   {
     step: '03',
     title: 'The Appropriate Workflow Is Initiated',
     desc: 'Based on the request and available integrations, the AI system follows the relevant configured workflow: providing approved practice information, assisting with an appointment request, or interacting with a connected scheduling system.',
+    image:
+      'https://cdn.shopify.com/s/files/1/0676/1155/7936/files/How_It_Works_03_Workflow_Initiated.webp?v=1793823672',
   },
   {
     step: '04',
     title: 'The Appropriate Next Step Is Identified',
     desc: 'If a request requires additional attention or falls outside the configured workflow, the system follows the escalation or staff-coordination process established during implementation, ensuring human oversight is always maintained.',
+    image:
+      'https://cdn.shopify.com/s/files/1/0676/1155/7936/files/How_It_Works_04_Next_Step_Identified.webp?v=1793823674',
   },
 ];
 
@@ -268,6 +280,41 @@ const faqs = [
 export const AIVoiceAgentsServiceView: React.FC = () => {
   const { playHover, playClick } = useSound();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+
+  // Scroll driven expanding video animation matching homepage
+  const { scrollYProgress } = useScroll({
+    target: videoContainerRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 0.35, 0.7, 1], [0.93, 1, 1, 0.95]);
+  const borderRadius = useTransform(scrollYProgress, [0, 0.35, 0.7, 1], [28, 0, 0, 28]);
+  const widthPercent = useTransform(scrollYProgress, [0, 0.35, 0.7, 1], ['94%', '100%', '100%', '94%']);
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    playClick();
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    playClick();
+    if (!videoRef.current) return;
+    videoRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
 
   const toggleFaq = (idx: number) => {
     playClick();
@@ -277,198 +324,156 @@ export const AIVoiceAgentsServiceView: React.FC = () => {
   return (
     <div
       style={{ backgroundColor: '#f3f2eb' }}
-      className="min-h-screen text-[#0f1d07] pt-24 sm:pt-28 lg:pt-32"
+      className="min-h-screen text-[#0f1d07] pt-20 sm:pt-24 lg:pt-28"
     >
       {/* ============================================================== */}
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION & VIDEO SHOWCASE */}
       {/* ============================================================== */}
-      <section className="relative px-6 sm:px-12 lg:px-16 pt-8 pb-20 sm:pb-28 lg:pb-36 border-b border-black/[0.08] overflow-hidden">
-        <div className="max-w-[1600px] mx-auto">
-          {/* Breadcrumb / Category Tag */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="flex items-center gap-2 mb-6 sm:mb-8"
-          >
-            <Link
-              href="/"
-              onMouseEnter={playHover}
-              onClick={playClick}
-              className="text-xs uppercase tracking-widest text-[#0f1d07]/60 hover:text-black transition-colors font-mono"
-            >
-              Home
-            </Link>
-            <span className="text-[#0f1d07]/30 text-xs">/</span>
-            <span className="text-xs uppercase tracking-widest text-[#0f1d07]/60 font-mono">
-              Services
-            </span>
-            <span className="text-[#0f1d07]/30 text-xs">/</span>
+      <section className="relative pt-8 sm:pt-12 md:pt-16 pb-0 overflow-hidden">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-16">
+          {/* Eyebrow matching reference structure */}
+          <div className="mb-5 sm:mb-6">
             <span
-              className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#06b6d4]/10 border border-[#06b6d4]/20 text-[#0891b2] text-[11px] font-semibold tracking-wider uppercase font-mono"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/[0.05] border border-black/10 text-xs font-semibold tracking-[0.14em] uppercase text-[rgb(15,29,7)]"
+              style={{
+                fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+              }}
             >
-              <FiPhoneCall className="w-3 h-3" />
-              AI Voice Agents &amp; Receptionists
+              <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
+              AI VOICE AGENTS &amp; HEALTHCARE RECEPTIONISTS
             </span>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Left Column: Heading, Lead & CTAs */}
-            <div className="lg:col-span-7">
-              <h1
-                className="text-4xl sm:text-6xl lg:text-[68px] font-medium tracking-[-0.035em] leading-[1.05] text-[#0f1d07] mb-6 sm:mb-8"
-                style={{
-                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
-                  fontWeight: 500,
-                }}
-              >
-                <TextSplit
-                  text="AI Voice Agents & Receptionists for Healthcare"
-                  stagger={0.015}
-                  delay={0.05}
-                />
-              </h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.15 }}
-                className="text-lg sm:text-xl text-[#0f1d07]/85 leading-relaxed font-normal mb-5 max-w-2xl"
-                style={{
-                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
-                  fontWeight: 400,
-                }}
-              >
-                Healthcare practices depend on effective communication to manage patient inquiries, appointment requests and everyday administrative responsibilities. When incoming calls and repetitive tasks consume valuable staff time, it can become harder to maintain an organized patient communication process.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.22 }}
-                className="text-sm sm:text-base text-[#0f1d07]/75 leading-relaxed font-normal mb-6 max-w-2xl"
-                style={{
-                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
-                  fontWeight: 400,
-                }}
-              >
-                Byte Operator develops AI voice agents and healthcare receptionist solutions that help healthcare providers manage inbound patient calls, support appointment scheduling and streamline routine communication workflows. Through custom development and API integrations, our solutions can be designed around existing healthcare systems and the operational requirements of each organization.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.28 }}
-                className="text-sm sm:text-base text-[#0f1d07]/75 leading-relaxed font-normal mb-8 sm:mb-10 max-w-2xl"
-                style={{
-                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
-                  fontWeight: 400,
-                }}
-              >
-                Whether you operate a medical practice, dental office, dermatology clinic or another healthcare organization, Byte Operator helps you explore practical AI voice solutions tailored to your communication needs.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.35 }}
-                className="flex flex-wrap items-center gap-4"
-              >
-                <Link
-                  href="/contact"
-                  onMouseEnter={playHover}
-                  onClick={playClick}
-                  className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#111814] text-white hover:bg-black transition-all duration-200 text-sm sm:text-base font-medium shadow-md group"
-                  style={{
-                    fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
-                    fontWeight: 500,
-                  }}
-                >
-                  <span>Discuss Your AI Voice Agent Project</span>
-                  <FiArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-                <a
-                  href="#workflow"
-                  onMouseEnter={playHover}
-                  onClick={playClick}
-                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full border border-black/15 text-[#0f1d07] hover:bg-black/[0.04] transition-colors text-sm font-medium"
-                >
-                  <span>See How It Works</span>
-                  <FiChevronRight className="w-4 h-4" />
-                </a>
-              </motion.div>
-            </div>
-
-            {/* Right Column: Interactive System Architecture Preview Card */}
-            <div className="lg:col-span-5">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.96, y: 24 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="rounded-3xl bg-white border border-black/10 p-6 sm:p-8 shadow-sm flex flex-col gap-6"
-              >
-                <div className="flex items-center justify-between pb-4 border-b border-black/[0.06]">
-                  <div className="flex items-center gap-3">
-                    <span className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-xs uppercase font-mono tracking-wider font-semibold text-[#0f1d07]/75">
-                      Live Telephony Flow
-                    </span>
-                  </div>
-                  <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-black/[0.04] text-[#0f1d07]/60">
-                    24/7 Availability
-                  </span>
-                </div>
-
-                {/* Workflow Simulation Stack */}
-                <div className="space-y-3">
-                  <div className="p-3.5 rounded-xl bg-black/[0.02] border border-black/[0.06] flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#06b6d4]/10 text-[#0891b2] flex items-center justify-center shrink-0">
-                      <FiPhoneCall className="w-4 h-4" />
-                    </div>
-                    <div className="text-xs">
-                      <p className="font-medium text-[#0f1d07]">Inbound Patient Call</p>
-                      <p className="text-[#0f1d07]/60">Instant greeting &amp; natural language intake</p>
-                    </div>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-black/[0.02] border border-black/[0.06] flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#A880F0]/10 text-[#A880F0] flex items-center justify-center shrink-0">
-                      <FiCpu className="w-4 h-4" />
-                    </div>
-                    <div className="text-xs">
-                      <p className="font-medium text-[#0f1d07]">Intent &amp; Routing Engine</p>
-                      <p className="text-[#0f1d07]/60">Booking, rescheduling, or practice information</p>
-                    </div>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-black/[0.02] border border-black/[0.06] flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#22c55e]/10 text-[#22c55e] flex items-center justify-center shrink-0">
-                      <FiDatabase className="w-4 h-4" />
-                    </div>
-                    <div className="text-xs">
-                      <p className="font-medium text-[#0f1d07]">Connected EHR / Scheduling API</p>
-                      <p className="text-[#0f1d07]/60">Real-time slot sync &amp; database confirmation</p>
-                    </div>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-black/[0.02] border border-black/[0.06] flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#ec4899]/10 text-[#ec4899] flex items-center justify-center shrink-0">
-                      <FiUserCheck className="w-4 h-4" />
-                    </div>
-                    <div className="text-xs">
-                      <p className="font-medium text-[#0f1d07]">Human Escalation Fallback</p>
-                      <p className="text-[#0f1d07]/60">Seamless warm transfer to on-duty staff</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-black/[0.06] flex items-center justify-between text-xs text-[#0f1d07]/60">
-                  <span>Engineered by Byte Operator</span>
-                  <span className="font-mono text-[#0891b2]">HIPAA Scoped Architecture</span>
-                </div>
-              </motion.div>
-            </div>
           </div>
+
+          {/* Main Headline */}
+          <div className="mb-6 sm:mb-8 max-w-4xl">
+            <h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] xl:text-[62px] font-medium tracking-[-0.035em] text-[rgb(15,29,7)] leading-[1.08]"
+              style={{
+                fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                fontWeight: 500,
+                color: 'rgb(15, 29, 7)',
+              }}
+            >
+              <TextSplit
+                text="AI Voice Agents & Receptionists for Healthcare"
+                stagger={0.015}
+                delay={0.05}
+              />
+            </h1>
+          </div>
+
+          {/* Body Copy */}
+          <div className="mb-8 sm:mb-10 max-w-2xl">
+            <p
+              className="text-base sm:text-lg md:text-xl font-normal leading-relaxed text-[rgb(15,29,7)]/75 mb-4"
+              style={{
+                fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                fontWeight: 400,
+              }}
+            >
+              Healthcare practices depend on effective communication to manage patient inquiries, appointment requests and everyday administrative responsibilities. Byte Operator develops AI voice agents and healthcare receptionist solutions that help healthcare providers manage inbound patient calls, support appointment scheduling and streamline routine communication workflows.
+            </p>
+            <p
+              className="text-sm sm:text-base font-normal leading-relaxed text-[rgb(15,29,7)]/65"
+              style={{
+                fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                fontWeight: 400,
+              }}
+            >
+              Whether you operate a medical practice, dental office, dermatology clinic or another healthcare organization, Byte Operator helps you explore practical AI voice solutions tailored to your communication needs.
+            </p>
+          </div>
+
+          {/* CTAs and Supporting Text matching reference structure */}
+          <div className="flex flex-col gap-3.5 mb-12 sm:mb-16">
+            <div className="flex flex-wrap items-center gap-3.5">
+              <Link
+                href="/contact"
+                onMouseEnter={playHover}
+                onClick={playClick}
+                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[rgb(15,29,7)] text-white hover:bg-black font-medium text-sm sm:text-base transition-all duration-200 shadow-sm hover:scale-[1.02] group cursor-pointer"
+                style={{
+                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                }}
+              >
+                <span>Discuss Your AI Voice Agent Project</span>
+                <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+              </Link>
+
+              <a
+                href="#capabilities"
+                onMouseEnter={playHover}
+                onClick={playClick}
+                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full border border-[rgb(15,29,7)]/25 text-[rgb(15,29,7)] hover:bg-black/5 hover:border-[rgb(15,29,7)]/50 font-medium text-sm sm:text-base transition-all duration-200 cursor-pointer"
+                style={{
+                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                }}
+              >
+                <span>Explore Capabilities</span>
+              </a>
+            </div>
+
+            {/* Supporting Text matching reference image */}
+            <p
+              className="text-xs sm:text-[13px] text-[rgb(15,29,7)]/60 font-medium tracking-wide mt-1"
+              style={{
+                fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+              }}
+            >
+              Technology solutions for medical practices, specialty clinics, and healthcare organizations.
+            </p>
+          </div>
+        </div>
+
+        {/* Complete Expanding Video Showcase matching homepage */}
+        <div ref={videoContainerRef} className="relative w-full overflow-hidden flex flex-col items-center pb-16 sm:pb-24">
+          <motion.div
+            style={{
+              width: widthPercent,
+              scale,
+              borderRadius,
+            }}
+            className="relative h-[65vh] sm:h-[80vh] lg:h-[92vh] min-h-[480px] overflow-hidden bg-black shadow-[0_25px_60px_rgba(0,0,0,0.25)] transition-all duration-200"
+          >
+            <video
+              ref={videoRef}
+              src={VIDEO_URL}
+              autoPlay
+              loop
+              muted={isMuted}
+              playsInline
+              className="w-full h-full object-cover select-none"
+            />
+
+            {/* Bottom Right Floating Video Controls */}
+            <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-20 flex items-center gap-1.5 bg-black/50 backdrop-blur-md p-1.5 rounded-full border border-white/10 shadow-lg">
+              <button
+                onClick={togglePlay}
+                className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center transition-all duration-200"
+                title={isPlaying ? 'Pause' : 'Play'}
+                aria-label={isPlaying ? 'Pause' : 'Play'}
+              >
+                {isPlaying ? (
+                  <Pause className="w-4 h-4 fill-current" />
+                ) : (
+                  <Play className="w-4 h-4 fill-current ml-0.5" />
+                )}
+              </button>
+
+              <button
+                onClick={toggleMute}
+                className="w-9 h-9 rounded-full bg-white/20 hover:bg-white text-white hover:text-black flex items-center justify-center transition-all duration-200"
+                title={isMuted ? 'Unmute' : 'Mute'}
+                aria-label={isMuted ? 'Unmute' : 'Mute'}
+              >
+                {isMuted ? (
+                  <VolumeX className="w-4 h-4" />
+                ) : (
+                  <Volume2 className="w-4 h-4" />
+                )}
+              </button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -477,29 +482,97 @@ export const AIVoiceAgentsServiceView: React.FC = () => {
       {/* ============================================================== */}
       <section className="px-6 sm:px-12 lg:px-16 py-20 sm:py-28 lg:py-36 bg-white border-b border-black/[0.08]">
         <div className="max-w-[1600px] mx-auto">
-          <div className="max-w-3xl mb-14 sm:mb-20">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.05] border border-black/10 text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-[#0f1d07] mb-3 font-mono">
-              <FiPhoneCall className="w-3.5 h-3.5 text-[#0891b2]" />
-              ENGINEERED FOR CLINICAL OPERATIONS
-            </span>
-            <h2
-              className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-[-0.03em] leading-[1.12] text-[#0f1d07] mb-5"
-              style={{
-                fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
-                fontWeight: 500,
-              }}
+          {/* Top 2-Column: Content + Animated Image */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-16 items-center mb-16 sm:mb-20">
+            {/* Left Column: Headline and Story Narrative */}
+            <div className="lg:col-span-6 flex flex-col justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="mb-3"
+              >
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.05] border border-black/10 text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-[#0f1d07] font-mono">
+                  <FiPhoneCall className="w-3.5 h-3.5 text-[#0891b2]" />
+                  ENGINEERED FOR CLINICAL OPERATIONS
+                </span>
+              </motion.div>
+
+              <h2
+                className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-[-0.03em] leading-[1.12] text-[#0f1d07] mb-5"
+                style={{
+                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                  fontWeight: 500,
+                }}
+              >
+                <TextSplit
+                  text="AI Voice Agents Built for Healthcare Providers"
+                  stagger={0.012}
+                  delay={0.05}
+                />
+              </h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.12 }}
+                className="text-base sm:text-lg text-[#0f1d07]/85 leading-relaxed font-normal mb-4"
+                style={{
+                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                  fontWeight: 400,
+                }}
+              >
+                Healthcare communication requires more than simply answering a phone call. Patients contact medical practices for appointment requests, general information, scheduling changes and other administrative needs. Each request requires an appropriate response and a clear communication process.
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.18 }}
+                className="text-sm sm:text-base text-[#0f1d07]/75 leading-relaxed font-normal mb-4"
+                style={{
+                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                  fontWeight: 400,
+                }}
+              >
+                Byte Operator builds AI-powered voice solutions designed to support these healthcare interactions. An AI healthcare receptionist can understand routine patient requests, follow configured communication workflows and assist with administrative tasks that would otherwise require manual attention from reception teams.
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.24 }}
+                className="text-sm sm:text-base text-[#0f1d07]/75 leading-relaxed font-normal"
+                style={{
+                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                  fontWeight: 400,
+                }}
+              >
+                Our approach focuses on combining conversational AI, workflow automation and custom software integration to create a solution that fits your practice.
+              </motion.p>
+            </div>
+
+            {/* Right Column: Animated WebP Showcase */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-6 flex items-center justify-center"
             >
-              AI Voice Agents Built for Healthcare Providers
-            </h2>
-            <p className="text-base sm:text-lg text-[#0f1d07]/80 leading-relaxed font-normal mb-4">
-              Healthcare communication requires more than simply answering a phone call. Patients contact medical practices for appointment requests, general information, scheduling changes and other administrative needs. Each request requires an appropriate response and a clear communication process.
-            </p>
-            <p className="text-sm sm:text-base text-[#0f1d07]/75 leading-relaxed font-normal mb-4">
-              Byte Operator builds AI-powered voice solutions designed to support these healthcare interactions. An AI healthcare receptionist can understand routine patient requests, follow configured communication workflows and assist with administrative tasks that would otherwise require manual attention from reception teams.
-            </p>
-            <p className="text-sm sm:text-base text-[#0f1d07]/75 leading-relaxed font-normal">
-              Our approach focuses on combining conversational AI, workflow automation and custom software integration to create a solution that fits your practice.
-            </p>
+              <div className="relative w-full overflow-hidden flex items-center justify-center group">
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0676/1155/7936/files/AI_Voice_Agents_Animated.webp?v=1793823156"
+                  alt="AI Voice Agents Built for Healthcare Providers"
+                  className="w-full h-auto object-contain select-none transition-transform duration-500 group-hover:scale-[1.01]"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
           </div>
 
           {/* 6 Key Operational Opportunities Grid */}
@@ -543,7 +616,7 @@ export const AIVoiceAgentsServiceView: React.FC = () => {
       {/* ============================================================== */}
       {/* 3. WHAT CAN OUR AI HEALTHCARE RECEPTIONIST DO? */}
       {/* ============================================================== */}
-      <section className="px-6 sm:px-12 lg:px-16 py-20 sm:py-28 lg:py-36 border-b border-black/[0.08]">
+      <section id="capabilities" className="px-6 sm:px-12 lg:px-16 py-20 sm:py-28 lg:py-36 border-b border-black/[0.08]">
         <div className="max-w-[1600px] mx-auto">
           <div className="max-w-3xl mb-14 sm:mb-20">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.05] border border-black/10 text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-[#0f1d07] mb-3 font-mono">
@@ -725,69 +798,132 @@ export const AIVoiceAgentsServiceView: React.FC = () => {
       {/* ============================================================== */}
       <section className="px-6 sm:px-12 lg:px-16 py-20 sm:py-28 lg:py-36 bg-white border-b border-black/[0.08]">
         <div className="max-w-[1600px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div className="lg:col-span-6 lg:sticky lg:top-28 space-y-6">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.05] border border-black/10 text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-[#0f1d07] font-mono">
-                <FiDatabase className="w-3.5 h-3.5 text-[#06b6d4]" />
-                CUSTOM API &amp; SYSTEM INTEGRATIONS
-              </span>
+          {/* Alternating 2-Column: Animated Image on Left, Narrative Content on Right */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-16 items-center mb-16 sm:mb-20">
+            {/* Left Column: Animated Image Showcase */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="order-2 lg:order-1 lg:col-span-6 flex items-center justify-center"
+            >
+              <div className="relative w-full overflow-hidden flex items-center justify-center group">
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0676/1155/7936/files/EHR_EMR_Integration_Animated.gif?v=1793823446"
+                  alt="Custom EHR and EMR Integrations for Healthcare"
+                  className="w-full h-auto object-contain select-none transition-transform duration-500 group-hover:scale-[1.01]"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+
+            {/* Right Column: Narrative Content */}
+            <div className="order-1 lg:order-2 lg:col-span-6 flex flex-col justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="mb-3"
+              >
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.05] border border-black/10 text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-[#0f1d07] font-mono">
+                  <FiDatabase className="w-3.5 h-3.5 text-[#06b6d4]" />
+                  CUSTOM API &amp; SYSTEM INTEGRATIONS
+                </span>
+              </motion.div>
+
               <h2
-                className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-[-0.03em] leading-[1.12] text-[#0f1d07]"
+                className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-[-0.03em] leading-[1.12] text-[#0f1d07] mb-5"
                 style={{
                   fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
                   fontWeight: 500,
                 }}
               >
-                Custom EHR and EMR Integrations for Healthcare
+                <TextSplit
+                  text="Custom EHR and EMR Integrations for Healthcare"
+                  stagger={0.012}
+                  delay={0.05}
+                />
               </h2>
-              <p className="text-base sm:text-lg text-[#0f1d07]/80 leading-relaxed font-normal">
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.12 }}
+                className="text-base sm:text-lg text-[#0f1d07]/85 leading-relaxed font-normal mb-4"
+                style={{
+                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                  fontWeight: 400,
+                }}
+              >
                 Healthcare organizations often rely on electronic health records (EHR) and electronic medical records (EMR) systems to manage important patient and operational information.
-              </p>
-              <p className="text-sm sm:text-base text-[#0f1d07]/75 leading-relaxed font-normal">
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.18 }}
+                className="text-sm sm:text-base text-[#0f1d07]/75 leading-relaxed font-normal mb-5"
+                style={{
+                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                  fontWeight: 400,
+                }}
+              >
                 An AI voice agent becomes more useful when its workflows can interact appropriately with the software already used by a healthcare organization. Byte Operator develops custom API integrations to connect AI voice solutions with supported healthcare systems and existing business workflows.
-              </p>
-              <div className="p-6 rounded-2xl bg-[#f3f2eb] border border-black/[0.08]">
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.24 }}
+                className="p-5 sm:p-6 rounded-2xl bg-[#f3f2eb] border border-black/[0.08]"
+              >
                 <h4 className="text-base font-medium text-[#0f1d07] mb-2 font-mono">
                   Custom Healthcare API Integrations
                 </h4>
                 <p className="text-xs sm:text-sm text-[#0f1d07]/75 leading-relaxed font-normal">
                   Custom API development can help connect different applications and support the exchange of information required by an agreed workflow. Rather than assuming every healthcare organization uses the same systems, Byte Operator approaches integrations according to the client’s technical environment and operational needs.
                 </p>
-              </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Integration Around Your Practice's Requirements Block */}
+          <div className="p-8 sm:p-10 rounded-3xl bg-[#f3f2eb] border border-black/[0.08]">
+            <div className="max-w-3xl mb-8">
+              <h3
+                className="text-xl sm:text-2xl font-medium text-[#0f1d07] mb-3 tracking-tight"
+                style={{
+                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                  fontWeight: 500,
+                }}
+              >
+                Integration Around Your Practice&apos;s Requirements
+              </h3>
+              <p className="text-sm sm:text-base text-[#0f1d07]/80 leading-relaxed font-normal">
+                Every healthcare organization has different processes and software requirements. Our custom integration approach considers:
+              </p>
             </div>
 
-            <div className="lg:col-span-6 space-y-6">
-              <div className="p-8 sm:p-10 rounded-3xl bg-[#f3f2eb] border border-black/[0.08]">
-                <h3
-                  className="text-xl sm:text-2xl font-medium text-[#0f1d07] mb-3 tracking-tight"
-                  style={{
-                    fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
-                    fontWeight: 500,
-                  }}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              {integrationPoints.map((point, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-xl bg-white border border-black/[0.06] flex items-center gap-3 text-xs sm:text-sm font-medium text-[#0f1d07]"
                 >
-                  Integration Around Your Practice&apos;s Requirements
-                </h3>
-                <p className="text-sm sm:text-base text-[#0f1d07]/80 leading-relaxed font-normal mb-6">
-                  Every healthcare organization has different processes and software requirements. Our custom integration approach considers:
-                </p>
-
-                <div className="space-y-3">
-                  {integrationPoints.map((point, idx) => (
-                    <div
-                      key={idx}
-                      className="p-3.5 rounded-xl bg-white border border-black/[0.06] flex items-center gap-3 text-xs sm:text-sm font-medium text-[#0f1d07]"
-                    >
-                      <FiCheckCircle className="w-4 h-4 text-[#06b6d4] shrink-0" />
-                      <span>{point}</span>
-                    </div>
-                  ))}
+                  <FiCheckCircle className="w-4 h-4 text-[#06b6d4] shrink-0" />
+                  <span>{point}</span>
                 </div>
-
-                <p className="text-xs sm:text-sm text-[#0f1d07]/70 leading-relaxed font-normal mt-6 italic">
-                  The result is an integration plan based on the systems and requirements that are actually supported.
-                </p>
-              </div>
+              ))}
             </div>
+
+            <p className="text-xs sm:text-sm text-[#0f1d07]/70 leading-relaxed font-normal mt-6 italic">
+              The result is an integration plan based on the systems and requirements that are actually supported.
+            </p>
           </div>
         </div>
       </section>
@@ -816,7 +952,7 @@ export const AIVoiceAgentsServiceView: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
             {workflowSteps.map((step, idx) => (
               <motion.div
                 key={idx}
@@ -824,25 +960,38 @@ export const AIVoiceAgentsServiceView: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: 0.08 * idx }}
-                className="p-7 sm:p-8 rounded-3xl bg-white border border-black/10 shadow-sm flex flex-col justify-between relative group hover:border-black/25 transition-colors"
+                className="flex flex-col group"
               >
-                <div>
-                  <span className="text-2xl sm:text-3xl font-mono font-bold text-[#06b6d4] mb-4 block">
-                    {step.step}
-                  </span>
-                  <h3
-                    className="text-lg sm:text-xl font-medium text-[#0f1d07] mb-3 tracking-tight"
-                    style={{
-                      fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
-                      fontWeight: 500,
-                    }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#0f1d07]/75 leading-relaxed font-normal">
-                    {step.desc}
-                  </p>
+                {/* Clean Image without any background card */}
+                <div className="relative w-full aspect-[4/3] mb-5 flex items-center justify-center">
+                  <img
+                    src={step.image}
+                    alt={step.title}
+                    className="w-full h-full object-contain select-none group-hover:scale-[1.02] transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
+
+                {/* Monospace Step Badge */}
+                <div className="flex items-center mb-3">
+                  <span className="font-mono text-xs font-semibold px-2.5 py-0.5 rounded-md bg-black text-white">
+                    Stage {step.step}
+                  </span>
+                </div>
+
+                <h3
+                  className="text-lg sm:text-xl font-medium text-[#0f1d07] mb-2 tracking-tight leading-snug"
+                  style={{
+                    fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                    fontWeight: 500,
+                  }}
+                >
+                  {step.title}
+                </h3>
+
+                <p className="text-xs sm:text-sm text-[#0f1d07]/75 leading-relaxed font-normal">
+                  {step.desc}
+                </p>
               </motion.div>
             ))}
           </div>
