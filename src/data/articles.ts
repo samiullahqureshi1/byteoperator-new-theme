@@ -10,6 +10,7 @@ export interface Article {
   image: string;
 }
 
+
 export const articles: Article[] = [
   {
     slug: 'byte-operator-wins-4-australian-web-awards-including-best-in-show-design',
