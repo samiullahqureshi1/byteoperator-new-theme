@@ -6,24 +6,23 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'Byte Operator | Websites & Apps | Award-Winning Digital Agency',
+  title: 'Healthcare AI Solutions & Software Development | Byte Operator',
   description:
-    'Byte Operator is an award-winning digital product studio. We design, build and ship world-class websites, mobile apps, and scalable digital platforms for forward-thinking global brands.',
+    'Build smarter healthcare operations with AI voice agents, workflow automation, custom software and system integrations from Byte Operator.',
   keywords: [
+    'Healthcare AI Solutions',
+    'Healthcare Software Development',
+    'AI Voice Agents for Healthcare',
+    'Healthcare Workflow Automation',
+    'Healthcare System Integration',
+    'Custom Software Development',
     'Byte Operator',
-    'Digital Agency',
-    'Web Development',
-    'Next.js',
-    'Mobile Apps',
-    'UI/UX Design',
-    'Headless Commerce',
-    'AI & Automation',
   ],
   authors: [{ name: 'Byte Operator' }],
   openGraph: {
-    title: 'Byte Operator | Websites & Apps | Award-Winning Digital Agency',
+    title: 'Healthcare AI Solutions & Software Development | Byte Operator',
     description:
-      'We design, build and ship world-class digital products for forward-thinking brands.',
+      'Build smarter healthcare operations with AI voice agents, workflow automation, custom software and system integrations from Byte Operator.',
     url: 'https://byteoperator.com',
     siteName: 'Byte Operator',
     images: [
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
         url: 'https://ik.imagekit.io/isclzlt7q/humaan-v6-production/images/showreel_placeholder-285656_LfmLPCH6O.png?tr=w-1200,h-630',
         width: 1200,
         height: 630,
-        alt: 'Byte Operator Digital Agency',
+        alt: 'Byte Operator Healthcare AI Solutions',
       },
     ],
     locale: 'en_US',
@@ -39,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Byte Operator | Websites & Apps | Award-Winning Digital Agency',
+    title: 'Healthcare AI Solutions & Software Development | Byte Operator',
     description:
-      'We design, build and ship world-class digital products for forward-thinking brands.',
+      'Build smarter healthcare operations with AI voice agents, workflow automation, custom software and system integrations from Byte Operator.',
     images: ['https://ik.imagekit.io/isclzlt7q/humaan-v6-production/images/showreel_placeholder-285656_LfmLPCH6O.png?tr=w-1200,h-630'],
   },
   icons: {

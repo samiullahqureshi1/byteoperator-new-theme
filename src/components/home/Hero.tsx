@@ -1,20 +1,21 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
+import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, ArrowRight } from 'lucide-react';
 import { TextSplit } from '@/components/ui/TextSplit';
 import { useSound } from '@/components/layout/SoundProvider';
 
 const VIDEO_URL =
-  'https://player.vimeo.com/progressive_redirect/playback/900035537/rendition/1080p/file.mp4?loc=external&log_user=0&signature=92f8baecbcaa673d013bf28d8697afbb95b9360f73659a39636e837060325902';
+  'https://cdn.shopify.com/videos/c/o/v/19e561d1f9e44c84aa11d861fa5a5e6d.mp4';
 
 export const Hero: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { playClick } = useSound();
+  const { playClick, playHover } = useSound();
 
   // Scroll driven animation
   const { scrollYProgress } = useScroll({
@@ -58,39 +59,85 @@ export const Hero: React.FC = () => {
   return (
     <motion.div style={{ backgroundColor }} className="transition-colors duration-500 overflow-hidden relative">
       {/* Hero Typography Section */}
-      <section className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-12 sm:pb-16 overflow-hidden">
+      <section className="relative pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 overflow-hidden">
         <div className="max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-16">
-          {/* Main Headline - Exact Font Specs: neueMontreal, 130px, 500 weight, 119.6px line-height, rgb(15, 29, 7) */}
-          <div className="mb-12 sm:mb-16">
+          {/* Eyebrow */}
+          <div className="mb-5 sm:mb-6">
+            <span
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/[0.05] border border-black/10 text-xs font-semibold tracking-[0.14em] uppercase text-[rgb(15,29,7)]"
+              style={{
+                fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+              }}
+            >
+              <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
+              HEALTHCARE AI SOLUTIONS &amp; SOFTWARE ENGINEERING
+            </span>
+          </div>
+
+          {/* Main Headline - Decreased scale for better proportion */}
+          <div className="mb-6 sm:mb-8 max-w-4xl">
             <h1
-              className="text-[12vw] sm:text-[9.5vw] md:text-[8.5vw] lg:text-[130px] font-medium tracking-[-0.045em] text-[rgb(15,29,7)] select-none"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] xl:text-[62px] font-medium tracking-[-0.035em] text-[rgb(15,29,7)] leading-[1.08]"
               style={{
                 fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
                 fontWeight: 500,
-                lineHeight: '0.92',
                 color: 'rgb(15, 29, 7)',
               }}
             >
-              <div className="block" style={{ lineHeight: '119.6px' }}>
-                <TextSplit text="Extraordinary" stagger={0.02} />
-              </div>
-              <div className="block mt-1 sm:mt-2" style={{ lineHeight: '119.6px' }}>
-                <TextSplit text="Digital Experiences" delay={0.25} stagger={0.02} />
-              </div>
+              Smarter Healthcare Operations, Powered by AI and Software Engineering
             </h1>
           </div>
 
-          {/* Subheading */}
-          <div>
+          {/* Body Copy - Decreased and condensed */}
+          <div className="mb-8 sm:mb-10 max-w-2xl">
             <p
-              className="text-xl sm:text-2xl md:text-3xl font-normal leading-relaxed max-w-3xl"
+              className="text-base sm:text-lg md:text-xl font-normal leading-relaxed text-[rgb(15,29,7)]/75"
               style={{
                 fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
                 fontWeight: 400,
-                color: 'rgba(15, 29, 7, 0.8)',
               }}
             >
-              We design, build and ship world-class digital products for forward-thinking brands.
+              Byte Operator helps healthcare organizations automate administrative workflows, streamline patient communication, and build connected software systems tailored to your operational needs.
+            </p>
+          </div>
+
+          {/* CTAs and Supporting Text */}
+          <div className="flex flex-col gap-3.5">
+            <div className="flex flex-wrap items-center gap-3.5">
+              <Link
+                href="/contact"
+                onMouseEnter={playHover}
+                onClick={playClick}
+                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[rgb(15,29,7)] text-white hover:bg-black font-medium text-sm sm:text-base transition-all duration-200 shadow-sm hover:scale-[1.02] group cursor-pointer"
+                style={{
+                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                }}
+              >
+                <span>Book a Discovery Call</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+              </Link>
+
+              <Link
+                href="/expertise"
+                onMouseEnter={playHover}
+                onClick={playClick}
+                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full border border-[rgb(15,29,7)]/25 text-[rgb(15,29,7)] hover:bg-black/5 hover:border-[rgb(15,29,7)]/50 font-medium text-sm sm:text-base transition-all duration-200 cursor-pointer"
+                style={{
+                  fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+                }}
+              >
+                <span>Explore Our Solutions</span>
+              </Link>
+            </div>
+
+            {/* Supporting Text */}
+            <p
+              className="text-xs sm:text-[13px] text-[rgb(15,29,7)]/60 font-medium tracking-wide"
+              style={{
+                fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
+              }}
+            >
+              Technology solutions for medical practices, specialty clinics, and healthcare organizations.
             </p>
           </div>
         </div>

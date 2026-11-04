@@ -23,6 +23,16 @@ import {
   Heart,
   Rocket,
   ArrowRight,
+  PhoneCall,
+  Bot,
+  Code2,
+  GitBranch,
+  Activity,
+  Cloud,
+  Stethoscope,
+  Smile,
+  Eye,
+  PlusCircle,
 } from 'lucide-react';
 import { TextSplit } from '@/components/ui/TextSplit';
 import { expertiseTaxonomy } from '@/data/expertise';
@@ -48,6 +58,16 @@ const iconMap: Record<string, React.ElementType> = {
   Briefcase,
   Heart,
   Rocket,
+  PhoneCall,
+  Bot,
+  Code2,
+  GitBranch,
+  Activity,
+  Cloud,
+  Stethoscope,
+  Smile,
+  Eye,
+  PlusCircle,
 };
 
 export default function ExpertisePage() {

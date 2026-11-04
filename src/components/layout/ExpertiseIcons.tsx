@@ -140,74 +140,185 @@ export const IconCommunity: React.FC<{ className?: string }> = ({ className }) =
 </svg>
 );
 
+export const IconAIVoiceAgents: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+    <line x1="12" x2="12" y1="19" y2="22" />
+  </svg>
+);
+
+export const IconAIWorkflow: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="8" height="8" x="3" y="3" rx="2" />
+    <path d="M7 11v4a2 2 0 0 0 2 2h4" />
+    <rect width="8" height="8" x="13" y="13" rx="2" />
+  </svg>
+);
+
+export const IconCustomSoftware: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="16 18 22 12 16 6" />
+    <polyline points="8 6 2 12 8 18" />
+  </svg>
+);
+
+export const IconSaaS: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="18" height="18" x="3" y="3" rx="2" />
+    <path d="M3 9h18" />
+    <path d="M9 21V9" />
+  </svg>
+);
+
+export const IconAPISystem: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="6" x2="6" y1="3" y2="15" />
+    <circle cx="18" cy="6" r="3" />
+    <circle cx="6" cy="18" r="3" />
+    <path d="M18 9a9 9 0 0 1-9 9" />
+  </svg>
+);
+
+export const IconHealthcareSoftware: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+  </svg>
+);
+
+export const IconCloudInfrastructure: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+  </svg>
+);
+
+export const IconMedicalPractices: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3" />
+    <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4" />
+    <circle cx="20" cy="10" r="2" />
+  </svg>
+);
+
+export const IconDentalPractices: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M8 2c-2.8 0-5 2.2-5 5 0 3.2 1.5 6.5 2.5 9.5.5 1.5 1 3.5 2 3.5s1.5-2 2-3.5c.5-1.5 1-2.5 2.5-2.5s2 1 2.5 2.5c.5 1.5 1 3.5 2 3.5s1.5-2 2-3.5c1-3 2.5-6.3 2.5-9.5 0-2.8-2.2-5-5-5-1.5 0-2.8.7-3.7 1.8-.2.2-.4.2-.6 0C10.8 2.7 9.5 2 8 2Z" />
+  </svg>
+);
+
+export const IconDermatology: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z" />
+  </svg>
+);
+
+export const IconOphthalmology: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+);
+
+export const IconPrimaryCare: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+  </svg>
+);
+
+export const IconOtherSpecialties: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className || "w-4 h-4"} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <line x1="12" x2="12" y1="8" y2="16" />
+    <line x1="8" x2="16" y1="12" y2="12" />
+  </svg>
+);
+
 export const expertiseMenuGroups: ExpertiseMenuGroup[] = [
   {
     title: "What We Do",
     items: [
       {
-        label: "Websites",
-        href: "/expertise/websites",
+        label: "AI Voice Agents & Receptionists",
+        href: "/expertise/ai-voice-agents-receptionists",
         color: "#06b6d4",
-        icon: IconWebsites,
+        icon: IconAIVoiceAgents,
       },
       {
-        label: "Software",
-        href: "/expertise/web-applications",
-        color: "#ec4899",
-        icon: IconSoftware,
-      },
-      {
-        label: "Mobile Apps",
-        href: "/expertise/mobile-apps",
-        color: "#38bdf8",
-        icon: IconMobileApps,
-      },
-      {
-        label: "eCommerce",
-        href: "/expertise/ecommerce",
-        color: "#22c55e",
-        icon: IconeCommerce,
-      },
-      {
-        label: "Data Vis",
-        href: "/expertise/data-visualisation",
+        label: "AI Workflow Automation",
+        href: "/expertise/ai-workflow-automation",
         color: "#a855f7",
-        icon: IconDataVis,
+        icon: IconAIWorkflow,
+      },
+      {
+        label: "Custom Software Development",
+        href: "/expertise/custom-software-development",
+        color: "#ec4899",
+        icon: IconCustomSoftware,
+      },
+      {
+        label: "SaaS & Web Application Development",
+        href: "/expertise/saas-web-application-development",
+        color: "#38bdf8",
+        icon: IconSaaS,
+      },
+      {
+        label: "API & System Integration",
+        href: "/expertise/api-system-integration",
+        color: "#22c55e",
+        icon: IconAPISystem,
+      },
+      {
+        label: "Healthcare Software Integration",
+        href: "/expertise/healthcare-software-integration",
+        color: "#06b6d4",
+        icon: IconHealthcareSoftware,
+      },
+      {
+        label: "Cloud & Infrastructure Engineering",
+        href: "/expertise/cloud-infrastructure-engineering",
+        color: "#eab308",
+        icon: IconCloudInfrastructure,
       },
     ],
   },
   {
-    title: "Design & UX",
+    title: "Healthcare Solutions",
     items: [
       {
-        label: "User Research",
-        href: "/expertise/user-research-validation",
-        color: "#a855f7",
-        icon: IconUserResearch,
-      },
-      {
-        label: "UX Design",
-        href: "/expertise/user-experience-design",
+        label: "Medical Practices",
+        href: "/expertise/medical-practices",
         color: "#06b6d4",
-        icon: IconUXDesign,
+        icon: IconMedicalPractices,
       },
       {
-        label: "UI Design",
-        href: "/expertise/user-interface-design",
-        color: "#ec4899",
-        icon: IconUIDesign,
-      },
-      {
-        label: "Prototyping",
-        href: "/expertise/prototyping",
+        label: "Dental Practices",
+        href: "/expertise/dental-practices",
         color: "#38bdf8",
-        icon: IconPrototyping,
+        icon: IconDentalPractices,
       },
       {
-        label: "Design Systems",
-        href: "/expertise/design-systems",
+        label: "Dermatology & Aesthetic Clinics",
+        href: "/expertise/dermatology-aesthetic-clinics",
+        color: "#ec4899",
+        icon: IconDermatology,
+      },
+      {
+        label: "Ophthalmology Clinics",
+        href: "/expertise/ophthalmology-clinics",
+        color: "#a855f7",
+        icon: IconOphthalmology,
+      },
+      {
+        label: "Primary Care",
+        href: "/expertise/primary-care",
         color: "#22c55e",
-        icon: IconDesignSystems,
+        icon: IconPrimaryCare,
+      },
+      {
+        label: "Other Specialties",
+        href: "/expertise/other-specialties",
+        color: "#eab308",
+        icon: IconOtherSpecialties,
       },
     ],
   },
@@ -243,41 +354,6 @@ export const expertiseMenuGroups: ExpertiseMenuGroup[] = [
         href: "/expertise/ai-automation",
         color: "#a855f7",
         icon: IconAIampAutomation,
-      },
-    ],
-  },
-  {
-    title: "Experience",
-    items: [
-      {
-        label: "Commercial",
-        href: "/expertise/commercial",
-        color: "#38bdf8",
-        icon: IconCommercial,
-      },
-      {
-        label: "Not for Profit",
-        href: "/expertise/not-for-profit",
-        color: "#ec4899",
-        icon: IconNotforProfit,
-      },
-      {
-        label: "Innovation",
-        href: "/expertise/innovation-startups",
-        color: "#a855f7",
-        icon: IconInnovation,
-      },
-      {
-        label: "Education",
-        href: "/expertise/education",
-        color: "#eab308",
-        icon: IconEducation,
-      },
-      {
-        label: "Community",
-        href: "/expertise/community",
-        color: "#06b6d4",
-        icon: IconCommunity,
       },
     ],
   },

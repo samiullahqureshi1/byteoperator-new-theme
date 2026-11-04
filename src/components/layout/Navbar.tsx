@@ -125,10 +125,10 @@ export const Navbar: React.FC = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.98, y: -6 }}
                 transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-white rounded-[32px] sm:rounded-[40px] shadow-[0_25px_80px_rgba(0,0,0,0.18)] border border-black/[0.06] w-[960px] max-w-[96vw] overflow-hidden select-none"
+                className="bg-white rounded-[32px] sm:rounded-[40px] shadow-[0_25px_80px_rgba(0,0,0,0.18)] border border-black/[0.06] w-[1140px] max-w-[96vw] max-h-[88vh] overflow-y-auto select-none"
               >
                 {/* Top Pill Nav Bar inside the White Card */}
-                <div className="flex justify-center pt-3 sm:pt-3.5 pb-2">
+                <div className="flex justify-center pt-3 sm:pt-3.5 pb-2 sticky top-0 bg-white/95 backdrop-blur-sm z-10 border-b border-black/[0.03]">
                   <nav className="flex items-center gap-1">
                     {navLinks.map((item, idx) => {
                       const isActive =
@@ -188,12 +188,12 @@ export const Navbar: React.FC = () => {
                   </nav>
                 </div>
 
-                {/* 4 Columns of Expertise Items matching attached reference image */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 px-8 sm:px-12 lg:px-14 pt-8 sm:pt-10 pb-10 sm:pb-12 text-[rgb(15,29,7)]">
+                {/* 3 Columns of Expertise Items matching reference design */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 px-6 sm:px-10 lg:px-12 pt-8 sm:pt-10 pb-10 sm:pb-12 text-[rgb(15,29,7)]">
                   {expertiseMenuGroups.map((group, gIdx) => (
-                    <div key={gIdx} className="flex flex-col">
+                    <div key={gIdx} className="flex flex-col min-w-0">
                       <h4
-                        className="text-[19px] sm:text-[21px] font-semibold tracking-tight text-[#0c1024] mb-6 sm:mb-7 select-none"
+                        className="text-[19px] sm:text-[21px] font-semibold tracking-tight text-[#0c1024] mb-6 sm:mb-7 select-none whitespace-nowrap"
                         style={{
                           fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
                         }}
@@ -217,7 +217,7 @@ export const Navbar: React.FC = () => {
                                   fontSize: '15px',
                                   fontWeight: 500,
                                 }}
-                                className="flex items-center gap-3.5 text-[#2d3748] hover:text-black transition-colors group cursor-pointer"
+                                className="flex items-center gap-3 text-[#2d3748] hover:text-black transition-colors group cursor-pointer whitespace-nowrap"
                               >
                                 <span
                                   className="shrink-0 transition-transform duration-200 group-hover:scale-110 flex items-center justify-center w-4 h-4"
@@ -225,7 +225,9 @@ export const Navbar: React.FC = () => {
                                 >
                                   <IconComp className="w-4 h-4" />
                                 </span>
-                                <span>{service.label}</span>
+                                <span className="whitespace-nowrap group-hover:translate-x-0.5 transition-transform duration-150">
+                                  {service.label}
+                                </span>
                               </Link>
                             </li>
                           );

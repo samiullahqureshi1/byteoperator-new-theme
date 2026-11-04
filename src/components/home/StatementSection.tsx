@@ -1,167 +1,114 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { PhoneMissed, ClipboardList, Unlink, TrendingUp } from 'lucide-react';
 import { TextSplit } from '@/components/ui/TextSplit';
+import { useSound } from '@/components/layout/SoundProvider';
 
-interface ClientLogo {
-  name: string;
-  render: () => React.ReactNode;
-}
-
-const allClientLogos: ClientLogo[] = [
-  // Set 1 (First 4)
+const challenges = [
   {
-    name: 'RYCHIGER',
-    render: () => (
-      <span className="font-extrabold tracking-widest text-lg sm:text-xl font-mono uppercase text-white">
-        RYCHIGER
-      </span>
-    ),
+    number: '01',
+    title: 'Missed Patient Calls',
+    description:
+      'Unanswered calls and delayed responses can make it harder for patients to reach your practice and request appointments.',
+    icon: PhoneMissed,
   },
   {
-    name: 'National Breast Cancer Foundation',
-    render: () => (
-      <div className="flex items-center gap-2 text-white">
-        <svg width="24" height="28" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-6 text-white/90">
-          <path d="M12 2C8.5 2 6 4.5 6 8C6 11.5 8.5 15 12 18.5C15.5 15 18 11.5 18 8C18 4.5 15.5 2 12 2ZM12 20L4 26M12 20L20 26" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-        <div className="flex flex-col text-[10px] sm:text-[11px] font-semibold leading-tight text-white/90 uppercase tracking-tight">
-          <span>National</span>
-          <span>Breast Cancer</span>
-          <span>Foundation</span>
-        </div>
-      </div>
-    ),
+    number: '02',
+    title: 'Repetitive Administrative Tasks',
+    description:
+      'Manual appointment coordination, patient intake, reminders, and follow-ups can consume valuable staff time.',
+    icon: ClipboardList,
   },
   {
-    name: 'Curtin University',
-    render: () => (
-      <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-md border border-white/20">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-white">
-          <rect width="24" height="24" rx="4" fill="currentColor" fillOpacity="0.2"/>
-          <path d="M7 6H17V9H10V11H16V14H10V18H7V6Z" fill="currentColor"/>
-        </svg>
-        <span className="text-xs sm:text-sm font-bold text-white tracking-tight">
-          Curtin University
-        </span>
-      </div>
-    ),
+    number: '03',
+    title: 'Disconnected Systems',
+    description:
+      'When business applications and healthcare platforms operate separately, teams may need to repeat tasks and transfer information manually.',
+    icon: Unlink,
   },
   {
-    name: 'SEVEN WEST MEDIA',
-    render: () => (
-      <div className="flex flex-col items-center text-white">
-        <div className="flex items-center gap-1">
-          <span className="text-base sm:text-lg font-black italic">7</span>
-          <span className="w-4 h-4 rounded-full bg-white/20 border border-white/40 flex items-center justify-center text-[10px] font-bold">W</span>
-        </div>
-        <span className="text-[8px] sm:text-[9px] font-bold tracking-widest text-white/80 uppercase">
-          SEVEN WEST MEDIA
-        </span>
-      </div>
-    ),
-  },
-
-  // Set 2 (Next 4)
-  {
-    name: 'Cocos Keeling Islands',
-    render: () => (
-      <div className="flex items-center gap-2 text-white">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" className="text-white/90">
-          <circle cx="12" cy="12" r="9"/>
-        </svg>
-        <div className="flex flex-col text-[10px] sm:text-[11px] font-bold leading-tight text-white uppercase tracking-tight">
-          <span>Cocos Keeling</span>
-          <span>Islands</span>
-        </div>
-      </div>
-    ),
-  },
-  {
-    name: 'Tourism WA',
-    render: () => (
-      <div className="flex items-center gap-1.5 text-white">
-        <span className="text-sm sm:text-base font-bold tracking-tight">Tourism</span>
-        <span className="font-extrabold text-sm sm:text-base bg-white/20 px-1.5 py-0.5 rounded">WA</span>
-      </div>
-    ),
-  },
-  {
-    name: 'PayTo',
-    render: () => (
-      <div className="flex items-center gap-1.5 text-white">
-        <span className="text-lg sm:text-xl font-black italic tracking-tighter">Pay</span>
-        <div className="w-5 h-5 rounded-full bg-white text-[#A880F0] flex items-center justify-center font-bold text-xs">
-          To
-        </div>
-      </div>
-    ),
-  },
-  {
-    name: 'Deloitte',
-    render: () => (
-      <div className="flex items-center gap-1 text-white">
-        <span className="text-lg sm:text-xl font-bold tracking-tight">Deloitte</span>
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 ml-0.5" />
-      </div>
-    ),
+    number: '04',
+    title: 'Increasing Operational Demands',
+    description:
+      'As healthcare practices grow, maintaining efficient and consistent workflows becomes increasingly important.',
+    icon: TrendingUp,
   },
 ];
 
 export const StatementSection: React.FC = () => {
-  const [groupIndex, setGroupIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setGroupIndex((prev) => (prev === 0 ? 1 : 0));
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const currentLogos = groupIndex === 0 ? allClientLogos.slice(0, 4) : allClientLogos.slice(4, 8);
+  const { playHover } = useSound();
 
   return (
     <section
-      className="relative pt-12 sm:pt-16 pb-6 sm:pb-8 px-6 sm:px-12 lg:px-16 overflow-hidden"
+      className="relative pt-16 sm:pt-24 lg:pt-32 pb-20 sm:pb-28 lg:pb-36 px-6 sm:px-12 lg:px-16 overflow-hidden"
       style={{ backgroundColor: '#A880F0' }}
     >
-      <div className="max-w-[1500px] mx-auto flex flex-col items-center text-center">
+      <div className="max-w-[1500px] mx-auto flex flex-col items-center">
         {/* Main Statement Headline */}
         <h2
-          className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.4vw] font-medium tracking-[-0.035em] leading-[1.08] text-white max-w-5xl mb-12 sm:mb-16"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.2vw] font-medium tracking-[-0.035em] leading-[1.1] text-white max-w-5xl text-center mb-6 sm:mb-8"
           style={{
             fontFamily: 'neueMontreal, "neueMontreal Fallback", sans-serif',
             fontWeight: 500,
           }}
         >
           <TextSplit
-            text="We design, build and ship world-class digital products for forward-thinking brands."
-            stagger={0.015}
+            text="Healthcare Operations Shouldn't Be Held Back by Manual Work"
+            stagger={0.012}
           />
         </h2>
 
-        {/* Partner Logos Animated Row (Tightly spaced, no extra empty gap) */}
-        <div className="w-full min-h-[44px] flex items-center justify-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={groupIndex}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10 items-center justify-items-center"
-            >
-              {currentLogos.map((logo, idx) => (
-                <div
-                  key={idx}
-                  className="opacity-90 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                >
-                  {logo.render()}
+        {/* Narrative Paragraphs Bellow Headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="max-w-3xl text-center mx-auto mb-14 sm:mb-20 flex flex-col gap-3 sm:gap-4 text-base sm:text-lg md:text-xl text-white/90 font-normal leading-relaxed"
+        >
+          <p>
+            Healthcare teams manage patient calls, appointments, administrative tasks, and multiple software systems every day. Disconnected technology and repetitive processes can make these responsibilities more difficult to manage.
+          </p>
+          <p className="font-medium text-white">
+            Byte Operator helps healthcare organizations address these challenges through practical software and automation solutions.
+          </p>
+        </motion.div>
+
+        {/* 4 Challenges Cards Grid */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {challenges.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={item.number}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                onMouseEnter={playHover}
+                className="group relative rounded-2xl sm:rounded-3xl bg-white/[0.12] hover:bg-white/[0.18] border border-white/25 p-7 sm:p-9 backdrop-blur-md transition-all duration-300 shadow-lg flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="text-xs font-mono font-bold tracking-widest text-white/80 bg-white/10 px-3 py-1 rounded-full border border-white/20">
+                      {item.number}
+                    </span>
+                    <div className="w-10 h-10 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center text-white shadow-sm group-hover:scale-110 group-hover:bg-white group-hover:text-[#A880F0] transition-all duration-300">
+                      <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-105" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl lg:text-[26px] font-semibold text-white tracking-tight mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-white/85 leading-relaxed font-normal">
+                    {item.description}
+                  </p>
                 </div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

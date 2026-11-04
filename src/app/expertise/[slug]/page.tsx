@@ -25,6 +25,16 @@ import {
   Briefcase,
   Heart,
   Rocket,
+  PhoneCall,
+  Bot,
+  Code2,
+  GitBranch,
+  Activity,
+  Cloud,
+  Stethoscope,
+  Smile,
+  Eye,
+  PlusCircle,
 } from 'lucide-react';
 import { expertiseTaxonomy, ExpertiseService } from '@/data/expertise';
 import { MagneticButton } from '@/components/ui/MagneticButton';
@@ -50,6 +60,16 @@ const iconMap: Record<string, React.ElementType> = {
   Briefcase,
   Heart,
   Rocket,
+  PhoneCall,
+  Bot,
+  Code2,
+  GitBranch,
+  Activity,
+  Cloud,
+  Stethoscope,
+  Smile,
+  Eye,
+  PlusCircle,
 };
 
 export default function ExpertiseDetailPage() {
