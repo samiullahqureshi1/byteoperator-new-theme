@@ -188,7 +188,7 @@ export const WorkflowAutomation: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.72 }}
             >
               <Link
-                href="/contact"
+                href="/services/ai-workflow-automation-healthcare"
                 onMouseEnter={playHover}
                 onClick={playClick}
                 className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#111814] text-white font-medium text-xs sm:text-sm hover:bg-black transition-all duration-300 shadow-md hover:shadow-xl group"

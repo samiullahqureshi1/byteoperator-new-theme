@@ -81,6 +81,10 @@ export default function ExpertiseDetailPage() {
     redirect('/services/ai-voice-agents-healthcare');
   }
 
+  if (slug === 'ai-workflow-automation') {
+    redirect('/services/ai-workflow-automation-healthcare');
+  }
+
   let service: ExpertiseService | null = null;
   let parentCategoryTitle = '';
 

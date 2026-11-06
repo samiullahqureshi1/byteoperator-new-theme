@@ -245,7 +245,7 @@ export const expertiseMenuGroups: ExpertiseMenuGroup[] = [
       },
       {
         label: "AI Workflow Automation",
-        href: "/expertise/ai-workflow-automation",
+        href: "/services/ai-workflow-automation-healthcare",
         color: "#a855f7",
         icon: IconAIWorkflow,
       },
